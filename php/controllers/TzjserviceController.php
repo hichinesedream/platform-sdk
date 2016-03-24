@@ -2,35 +2,26 @@
 
 class TzjserviceController
 {
-	public function __construct()
-	{
-		header("Content-type: text/html; charset=utf-8");
-	}
-
-
 	// 统一入口函数
 	public function indexAction()
 	{
 		// 获取POST数据
 		$strPostRawData = file_get_contents('php://input');
 
-		// 载入加密解密算法器
+		// 解密数据包
 		$crypter = new Touzhijia_Platform_Protocol_MsgCrypter(TZJ_PROTOCOL_TOKEN, TZJ_PROTOCOL_AES_KEY, TZJ_PROTOCOL_PLAT_ID);
-
-		// 验证合法性
 		list($ret, $data) = $crypter->decrypt($strPostRawData);
 		if ($ret != 0) {
-			$this->showError("解密POST数据失败，错误码：$ret");
-			die();
+			$this->showError($ret);
 		}
 
-		// 请求分发
+		// 从解密后的数据包中提取service参数
 		$arrReq = json_decode($data, true);
 		if (empty($arrReq) || !isset($arrReq['service'])) {
-			$this->showError("解密POST['data']数据失败, 期望 {'service':xx, 'body':xx}, 错误码：$ret");
-			die();
+			$this->showError(Touzhijia_Platform_Protocol_ErrorCode::MISSING_SERVICE_NAME);
 		}
 
+		// 根据service参数进行请求分发
 		$chain = new Touzhijia_Platform_Util_CmdChain();
 		$chain->setAction('createuser',   __CLASS__, 'createuser');
 		$chain->setAction('binduser',     __CLASS__, 'binduser');
@@ -39,27 +30,33 @@ class TzjserviceController
 		$chain->setAction('querybids',    __CLASS__, 'querybids');
 		$chain->setAction('queryinvests', __CLASS__, 'queryinvests');
 		$chain->setAction('queryrepays',  __CLASS__, 'queryrepays');
+		$chain->setDefaultAction(__CLASS__, 'noservice');
 
 		// 获取返回
-		$strRes = $chain->dispatch($arrReq['service'], $arrReq);
+		$stRes = $chain->dispatch($arrReq['service'], $arrReq);
 
-		// 打包
-		list($ret, $data) = $crypter->encrypt($strRes);
-		if ($ret != 0) {
-			$this->showError("加密POST数据失败，错误码：$ret");
-			die();
+		// 如果需要返回错误, 不需要加密, 直接json返回
+		if ($stRes instanceof Touzhijia_Platform_Entity_ErrRes) {
+			header('HTTP/1.1 500 Internal Server Error');
+			header("Content-type: application/json; charset=utf-8");
+			die($stRes->toJson());
 		}
 
-		// 回吐
-		echo $data;
+		// 将返回结果以json格式表示, 加密, 并按协议格式打包
+		list($ret, $strEncryptedData) = $crypter->encrypt($stRes->toJson());
+		if ($ret != 0) {
+			$this->showError(Touzhijia_Platform_Protocol_ErrorCode::GEN_RETURN_MSG_ERROR);
+		}
+
+		header("Content-type: application/json; charset=utf-8");
+		echo $strEncryptedData;
 	}
 
 	
 	
 	public function createuser($arrReq)
 	{
-		$res = Touzhijia_Platform_Service_CreateUserTask::doTask($arrReq);
-		return $res->toString();
+		return Touzhijia_Platform_Service_CreateUserTask::doTask($arrReq);
 	}
 	
 	public function binduser($arrReq)
@@ -97,10 +94,19 @@ class TzjserviceController
 		echo __METHOD__;
 		Touzhijia_Platform_Util_String::print_rr($arrReq);
 	}
-	
-	
-	public function showError($msg)
+
+
+	public function noservice($arrReq)
 	{
-		echo $msg;
+		return Touzhijia_Platform_Service_NoServiceTask::doTask($arrReq);
+	}
+	
+	
+	public function showError($errcode)
+	{
+		header('HTTP/1.1 500 Internal Server Error');
+		header("Content-type: application/json; charset=utf-8");
+		$stRes = new Touzhijia_Platform_Entity_ErrRes($errcode);
+		die($stRes->toJson());
 	}	
 }

@@ -1,15 +1,8 @@
 <?php
 
-class Touzhijia_Platform_Entity_Message
+class Touzhijia_Platform_Entity_Message extends Touzhijia_Platform_Entity_BaseMsg
 {
-	private $_arrMsg;
-	
-	public function __construct()
-	{
-		$this->clear();
-	}
-	
-	public function clear()
+	public function reset()
 	{
 		$this->_arrMsg = array(
 			'data'      => null,
@@ -59,29 +52,4 @@ class Touzhijia_Platform_Entity_Message
 		return $this->_arrMsg['signature'];
 	}
 
-	public function parseFromJson($strJson)
-	{
-		$arrMsg = json_decode($strJson, true);
-		if ($arrMsg == false) {
-			return false;
-		}
-
-		// 检查必选字段是否存在
-		$arrNeedFields = array_keys($this->_arrMsg);
-		foreach ($arrNeedFields as $field) {
-			if (!array_key_exists($field, $arrMsg)) {
-				return false;
-			}   
-		} 
-
-		// 赋值
-		foreach ($arrNeedFields as $field) {
-			$this->_arrMsg[$field] = $arrMsg[$field];
-		} 
-	}
-	
-	public function toString()
-	{
-		return json_encode($this->_arrMsg);
-	}
 }

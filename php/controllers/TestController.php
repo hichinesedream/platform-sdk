@@ -58,29 +58,44 @@ class TestController
 	}
 
 
-	private function showError($msg)
+	// 模拟请求：传递一个错误的service请求
+	public function errserviceAction()
 	{
-		echo $msg;
+		$req = new Touzhijia_Platform_Entity_ErrReq();
+		$this->doRequest($req);
 	}
+
 
 	private function doRequest($req)
 	{
 		// 打包
-		list($ret, $strPostData) = $this->_crypter->encrypt($req->toString());
+		list($ret, $strPostData) = $this->_crypter->encrypt($req->toJson());
 		if ($ret != 0) {
-			$this->showError("Build request data failed. ret_code = $ret");
-			die();
+			$this->showError($ret);
 		}
 
-		// 请求
-		$strJson = Touzhijia_Platform_Util_Http::doPost($this->_service_url, $strPostData);
-		list($ret, $data) = $this->_crypter->decrypt($strJson);
-		if ($ret != 0) {
-			$this->showError("Build request data failed. ret_code = $ret");
-			die();
-		}
+		// 投之家向合作平台发起请求
+		list($http_code, $strJson) = Touzhijia_Platform_Util_Http::doPost($this->_service_url, $strPostData);
 
-		// 打印结果
-		Touzhijia_Platform_Util_String::print_rr($data);
+		// 处理结果
+		if ($http_code != 200) {
+			echo $strJson;
+		} else {
+			list($ret, $data) = $this->_crypter->decrypt($strJson);
+			if ($ret != 0) {
+				$this->showError($ret);
+			}
+
+			// 打印结果
+			Touzhijia_Platform_Util_String::print_rr($data);
+		}
+	}
+
+	private function showError($errcode)
+	{
+		header('HTTP/1.1 500 Internal Server Error');
+		header("Content-type: application/json; charset=utf-8");
+		$stRes = new Touzhijia_Platform_Entity_ErrRes($errcode);
+		die($stRes->toJson());
 	}
 }
