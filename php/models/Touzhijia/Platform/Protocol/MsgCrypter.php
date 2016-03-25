@@ -75,9 +75,9 @@ class Touzhijia_Platform_Protocol_MsgCrypter
 		$msg->setNonce($nonce);
 		$msg->setSignature($sign);
 		
-		$strOut = $msg->toString();
+		$strOut = $msg->toJson();
 		
-		return array(Touzhijia_Platform_Security_ErrorCode::$OK, $strOut);
+		return array(Touzhijia_Platform_Protocol_ErrorCode::OK, $strOut);
 	}
 
 
@@ -103,12 +103,12 @@ class Touzhijia_Platform_Protocol_MsgCrypter
 		$msg = new Touzhijia_Platform_Entity_Message();
 		$ret = $msg->parseFromJson($strJson);
 		if ($ret === false) {
-			return array(Touzhijia_Platform_Security_ErrorCode::$ParseJsonError, null);
+			return array(Touzhijia_Platform_Protocol_ErrorCode::PARSE_JSON_ERROR, null);
 		}
 
 		// 时间戳与当前时间偏移5分钟
 		if (abs(time() - $msg->getTimestamp()) > 300) {
-			return array(Touzhijia_Platform_Security_ErrorCode::$ValidateTimeStampError, null);
+			return array(Touzhijia_Platform_Protocol_ErrorCode::VALIDATE_TIMESTAMP_ERROR, null);
 		}
 
 		//验证安全签名
@@ -122,7 +122,7 @@ class Touzhijia_Platform_Protocol_MsgCrypter
 		}
 
 		if ($expected_sign != $msg->getSignature()) {
-			return array(Touzhijia_Platform_Security_ErrorCode::$ValidateSignatureError, null);
+			return array(Touzhijia_Platform_Protocol_ErrorCode::VALIDATE_SIGNATURE_ERROR, null);
 		}
 
 		// 解密 RawData = AESdecrypt(EncryptData, ReqKey);
@@ -132,10 +132,10 @@ class Touzhijia_Platform_Protocol_MsgCrypter
 		// 反序列化数据  RawData = RandomStr + DataLength + Data + PlatId;
 		list($rawdata, $appid) = Touzhijia_Platform_Protocol_DataEncoder::decode($rawdata);
 		if ($appid != $this->_appId) {
-			return array(Touzhijia_Platform_Security_ErrorCode::$ValidateAppidError, $rawdata);
+			return array(Touzhijia_Platform_Protocol_ErrorCode::VALIDATE_APPID_ERROR, $rawdata);
 		}
 
-		return array(Touzhijia_Platform_Security_ErrorCode::$OK, $rawdata);
+		return array(Touzhijia_Platform_Protocol_ErrorCode::OK, $rawdata);
 	}
 
 	private function _getRequestKey($key, $timestamp)

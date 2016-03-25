@@ -1,58 +1,66 @@
 <?php
 
-class Touzhijia_Platform_Entity_CreateUserRes
+class Touzhijia_Platform_Entity_CreateUserRes extends Touzhijia_Platform_Entity_BaseMsg
 {
-	private $_arrRes;
+	const SERVICE_NAME = 'createUser';
 	
-	public function __construct()
+	public function reset()
 	{
-		$this->clear();
-	}
-	
-	public function clear()
-	{
-		$this->_arrRes = array(
-			'username'   => null,
-			'usernamep'  => null,
-			'registerAt' => null,
-			'bindAt'     => null,
-			'bindType'   => null,
-			'tags'       => null
-		);
+		$this->_arrMsg = array(
+				'service' => strtolower(self::SERVICE_NAME),
+				'body'    => array(
+					'username'   => null,	// string, 投之家用户名
+					'usernamep'  => null,	// string, 合作平台用户名
+					'registerAt' => null,	// datetime, 用户在合作平台的注册时间, Unit:秒
+					'bindAt'     => null,	// datetime, 用户绑定投之家的时间(当前时间), Unit:秒
+					'bindType'   => null,	// enum, 0:投之家带来的新用户, 1:平台已有的老用户
+					'tags'       => null	// string, 标签
+					)
+				);
 	}
 	
 	public function setUserName($v)
 	{
-		$this->_arrRes['username'] = $v;
+		$this->_arrMsg['body']['username'] = $v;
+		return true;
 	}
 	
 	public function setUserNamep($v)
 	{
-		$this->_arrRes['usernamep'] = $v;
+		$this->_arrMsg['body']['usernamep'] = $v;
+		return true;
 	}
 	
 	public function setRegisterAt($v)
 	{
-		$this->_arrRes['registerAt'] = $v;
+		$this->_arrMsg['body']['registerAt'] = date('Y-m-d H:i:s', strtotime($v));
+		return true;
 	}
 	
 	public function setBindAt($v)
 	{
-		$this->_arrRes['bindAt'] = $v;
+		$this->_arrMsg['body']['bindAt'] = date('Y-m-d H:i:s', strtotime($v));
+		return true;
 	}
 	
 	public function setBindType($v)
 	{
-		$this->_arrRes['bindType'] = $v;
+		if (($v !== 0) && ($v !== 1)) {
+			return false;
+		}
+
+		$this->_arrMsg['body']['bindType'] = $v;
+		return true;
 	}
 	
 	public function setTags($v)
 	{
-		$this->_arrRes['tags'] = $v;
+		if (!is_array($v)) {
+			return false;
+		}
+
+		$this->_arrMsg['body']['tags'] = $v;
+		return true;
 	}
 	
-	public function toString()
-	{
-		return json_encode($this->_arrRes);
-	}
 }

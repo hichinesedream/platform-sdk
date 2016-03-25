@@ -23,14 +23,13 @@ class Touzhijia_Platform_Protocol_Signature
 			sort($arrData, SORT_STRING);
 			$str = implode($arrData);
 			$sign = sha1($str);
-			return array(Touzhijia_Platform_Security_ErrorCode::$OK, $sign);
+			return array(Touzhijia_Platform_Protocol_ErrorCode::OK, $sign);
 		} catch (Exception $e) {
 			//print $e . "\n";
-			return array(Touzhijia_Platform_Security_ErrorCode::$ComputeSignatureError, null);
+			return array(Touzhijia_Platform_Protocol_ErrorCode::COMPUTE_SIGNATURE_ERROR, null);
 		}
 	}
 
 }
 
 
-?>
