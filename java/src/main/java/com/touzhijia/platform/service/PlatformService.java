@@ -1,5 +1,7 @@
 package com.touzhijia.platform.service;
 
+import java.util.List;
+
 import com.touzhijia.platform.entity.BidInfo;
 import com.touzhijia.platform.entity.CreateUserReq;
 import com.touzhijia.platform.entity.InvestInfo;
@@ -24,14 +26,14 @@ public interface PlatformService {
 	public Redirect login(LoginReq req) throws PlatformException;
 	
 	// 查询用户信息
-	public UserInfo[] queryUser(QueryReq req) throws PlatformException;
+	public List<UserInfo> queryUser(QueryReq req) throws PlatformException;
 	
 	// 查询标的信息
-	public BidInfo[] queryBids(QueryReq req) throws PlatformException;
+	public List<BidInfo> queryBids(QueryReq req) throws PlatformException;
 	
 	// 查询投资记录
-	public InvestInfo[] queryInvests(QueryReq req) throws PlatformException;
+	public List<InvestInfo> queryInvests(QueryReq req) throws PlatformException;
 	
 	// 查询回款记录
-	public RepayInfo[] queryRepays(QueryReq req) throws PlatformException;
+	public List<RepayInfo> queryRepays(QueryReq req) throws PlatformException;
 }
