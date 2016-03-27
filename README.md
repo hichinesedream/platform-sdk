@@ -358,7 +358,7 @@ code | message
 	  "remainAmount": "float, 剩余金额",
 	  "minInvestAmount": "float, 起投金额",
 	  "period": "string, 借款期限, 1d, 1m，如果为活期该字段为0",
-	  "orignalRate": "float, 原始年化利率，13.5表示13.5%",
+	  "originalRate": "float, 原始年化利率，13.5表示13.5%",
 	  "rewardRate": "float, 奖励利率，13.5表示13.5%",
 	  "status": "enum, 标的状态，见标的状态表格",
 	  "repayment": "string, 还款方式",
