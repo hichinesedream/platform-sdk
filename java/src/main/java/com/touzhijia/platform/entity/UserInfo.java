@@ -18,6 +18,8 @@ public class UserInfo {
 	// 绑定类型，0:表示投之家带来的新用户，1:表示平台已有用户
 	private int bindType;
 	
+	private Assets assets;
+	
 	// 标签
 	private String[] tags;
 
@@ -59,6 +61,14 @@ public class UserInfo {
 
 	public void setBindType(int bindType) {
 		this.bindType = bindType;
+	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
 	}
 
 	public String[] getTags() {
