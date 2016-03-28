@@ -3,6 +3,7 @@ package com.touzhijia.platform.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.touzhijia.platform.entity.Message;
+import com.touzhijia.platform.entity.QueryReq;
 import com.touzhijia.platform.entity.Redirect;
 import com.touzhijia.platform.entity.ServiceData;
 import com.touzhijia.platform.security.MessageCrypt;
@@ -66,6 +67,10 @@ public class PlatformController {
     	}
     	Gson gson = gsonBuilder.create();
     	Object param = gson.fromJson(req.getBody(), paramClasses[0]);
+    	if (param instanceof QueryReq) {
+    		QueryReq q = (QueryReq)param;
+    		q.validate();
+    	}
     	Object ret = null;
     	try {
     		ret = method.invoke(platformService, param);

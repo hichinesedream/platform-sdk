@@ -2,6 +2,8 @@ package com.touzhijia.platform.entity;
 
 import java.util.Date;
 
+import com.touzhijia.platform.service.PlatformException;
+
 public class QueryReq {
 	public class TimeRange {
 		// 开始时间
@@ -67,5 +69,14 @@ public class QueryReq {
 	
 	public void setIndex(Index index) {
 		this.index = index;
+	}
+	
+	public void validate() throws PlatformException {
+		if (index == null && timeRange == null) {
+			throw new PlatformException(101, "参数有误");
+		}
+		if (timeRange.startTime.after(timeRange.endTime)) {
+			throw new PlatformException(101, "参数有误");
+		}
 	}
 }
