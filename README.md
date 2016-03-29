@@ -357,7 +357,7 @@ code | message
 	  "status": "enum, 标的状态，见标的状态表格",
 	  "repayment": "string, 还款方式",
 	  "type": "enum, 见标的类型表格",
-	  "prop": "string，标的性质，车贷，房贷，信用贷、融资租赁、保理等等",
+	  "prop": "string，标的性质,比如:车贷，房贷，信用贷、融资租赁、保理等等",
 	  "createAt": "datetime, 标的创建时间",
 	  "publishAt": "datetime, 标的起投时间，如果有倒计时，这个时间会晚于标的创建时间",
 	  "closeAt": "datetime, 标的截止购买时间",
@@ -429,12 +429,11 @@ status | 说明
 	  "id": "string, 订单ID，全局唯一",
 	  "bid": "string, 标的ID",
 	  "burl": "string, 标的url",
-	  "username": "string, 投之家用户名",
+	  "username": "string, 合作平台用户名",
 	  "amount": "float, 投资金额",
 	  "actualAmount": "float, 实际投资金额",
 	  "income": "float, 预期投资收益",
 	  "investAt": "datetime, 投资时间",
-	  "repayAt": "datetime，预计回款时间",
 	  "tags": "array, 标签"
 	}
 ]
@@ -455,7 +454,7 @@ status | 说明
 		"endTime": "结束时间"
 	},
 	"index": {
-		"field": "id OR investId OR username",
+		"field": "id OR bid OR username",
 		"vals": "array，见下面的说明"
 	}
 }
@@ -464,7 +463,7 @@ status | 说明
 可以根据时间的范围查询（timeRange）这个时间范围内发生的所有回款记录，也可以根据索引进行如下查询
 
 - id查询（field="id"），查询指定回款ID的回款记录，一个id对应一条回款记录
-- investId查询（field="investId"），查询指定投资ID对应的回款记录，一个ID对应一条或者多条（比如：分多期回款的）回款记录
+- bid查询（field="bid"），查询指定标的ID对应的回款记录，一个标的ID对应一条或者多条（比如：分多期回款的）回款记录
 - username（field="username"），查询制定用户的一段时间范围内的回款记录，**必须有timeRange参数**
 
 ### Response
@@ -474,9 +473,9 @@ status | 说明
 	{
 		"id": "string, 订单ID，全局唯一",
 		"investId": "string，投资ID",
-		"username": "string, 投之家用户名",
+		"bid": "string，标的ID",
+		"username": "string, 合作平台用户名",
 		"amount": "float, 回款金额",
-		"rate": "float, 回款利率",
 		"income": "float, 回款收益，可为负数",
 		"repayAt": "datetime, 回款时间",
 		"type": "enum，回款类型，见回款类型表格",
