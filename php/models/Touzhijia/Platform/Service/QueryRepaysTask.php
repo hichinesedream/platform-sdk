@@ -1,6 +1,14 @@
 <?php
 
-
+/**
+ * 查询回款记录功能处理类
+ * 
+ * @category   Touzhijia
+ * @package    Touzhijia_Platform_Service
+ * @author     JamesQin <qinwq@touzhijia.com>
+ * @copyright  (c) 2014-2016 Touzhijia Financial Information Ltd. Inc. (http://www.touzhijia.com)
+ * @version    1.0.0 2016-03-31 11:17:38
+ */
 class Touzhijia_Platform_Service_QueryRepaysTask implements Touzhijia_Platform_Service_BaseTask
 {
 	// @var Touzhijia_Platform_Entity_QueryRepaysReq
