@@ -261,6 +261,7 @@ code | message
 
 投之家会输出提示用户绑定成功的页面
 
+
 ## 3.3 单点登录
 
 投之家与合作平台帐户关联的用户，通过该接口登录到合作平台。
@@ -516,25 +517,25 @@ type | 说明
 
 下表为每个接口公用的一些异常
 
-type| name | 说明
---- | ---- | --
-101 | MISSING_SERVICE_NAME | 缺少 Service Name 
-102 | UNKNOWN_SERVICE_ERROR| Service Name不存在
-103 | VALIDATE_SIGNATURE_ERROR| 签名验证失败
-104 | VALIDATE_TIMESTAMP_ERROR| 时间戳过期
-105 | VALIDATE_APPID_ERROR| AppID校验失败
-106 | PARSE_JSON_ERROR| JSON反序列化出错
-107 | GEN_RETURN_MSG_ERROR| 生成返回包失败
-108 | COMPUTE_SIGNATURE_ERROR| 生成签名失败
-109 | ENCRYPT_AES_ERROR| 加密失败
-110 | DECRYPT_AES_ERROR| 解密失败
-201 | INVALID_PARAMETER| 请求参数出错
-202 | USER_NOT_EXISTS| 用户不存在
-203 | START_GREAT_THAN_END| startTime 不能大于endTime
-204 | TIME_RANGE_EXCEED| 时间查询跨度不能超过72小时
-205 | QUERY_ITEM_COUNT_EXCEED| 
-500 | APPLICATION_ERROR | 系统异常
-1001 | TELEPHONE_HAVE_USED | 手机号已占用
-1002 | EMAIL_HAVE_USED | 邮箱号已占用
-1003 | IDCARD_HAVE_USED | 身份证号已占用
-4001 | MISSING_USER | 用户不存在
+type| name | 说明 |
+--- | ---- | --  |
+101 | MISSING_SERVICE_NAME     | 缺少 Service Name 
+102 | UNKNOWN_SERVICE_ERROR    | Service Name不存在
+103 | VALIDATE_SIGNATURE_ERROR | 签名验证失败
+104 | VALIDATE_TIMESTAMP_ERROR | 时间戳过期
+105 | VALIDATE_APPID_ERROR 	   | AppID校验失败
+106 | PARSE_JSON_ERROR 		   | JSON反序列化出错
+107 | GEN_RETURN_MSG_ERROR	   | 生成返回包失败
+108 | COMPUTE_SIGNATURE_ERROR  | 生成签名失败
+109 | ENCRYPT_AES_ERROR		   | 加密失败
+110 | DECRYPT_AES_ERROR		   | 解密失败
+201 | INVALID_PARAMETER		   | 请求参数出错
+202 | USER_NOT_EXISTS		   | 用户不存在
+203 | START_GREAT_THAN_END	   | startTime 不能大于endTime
+204 | TIME_RANGE_EXCEED		   | 时间查询跨度不能超过72小时
+205 | QUERY_ITEM_COUNT_EXCEED  | 查询项数量过多
+500 | APPLICATION_ERROR        | 系统异常
+1001 | TELEPHONE_HAVE_USED     | 手机号已占用
+1002 | EMAIL_HAVE_USED 		   | 邮箱号已占用
+1003 | IDCARD_HAVE_USED 	   | 身份证号已占用
+4001 | MISSING_USER 		   | 用户不存在
