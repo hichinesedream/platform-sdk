@@ -6,28 +6,34 @@
  * 一个很简单的框架，把用户请求映射到控制器类的指定方法，以便减小规模，进行处理
  *
  * URL mode:
+ * <samp>
  *	http://<your_url>/<controller>/<action>
  *	http://<your_url>/index.php/<controller>/<action>
+ * </samp>
  *
  * URL example:
+ * <samp>
  *	http://localhost/myctrl/myact
  *	http://localhost/index.php/myctrl/myact
- *
- * URL example:
+ * </samp>
  *
  * Note:
  *	Need nginx or apache rewrite support
  *
  * Apache htaccess file in the root Directory: .htaccess
+ * <samp>
  *	RewriteEngine on
  *	RewriteCond $1 !^(index.php|css|js|images|robots.txt)  
  *	RewriteRule ^(.*)$ /index.php?/$1 [L]
+ * </samp>
  *
+ * @category   Touzhijia
  * @package    null
- * @copyright  Copyright (c) 2014-2016 Touzhijia Financial Information Ltd. Inc. (http://www.touzhijia.com)
- * @author     jamesqin(qinwq@touzhijia.com)
- * @version    1.0
+ * @author     JamesQin <qinwq@touzhijia.com>
+ * @copyright  (c) 2014-2016 Touzhijia Financial Information Ltd. Inc. (http://www.touzhijia.com)
+ * @version    1.0.0 2016-03-30 14:37:43
  */
+
 
 // 环境设置
 error_reporting(E_ALL | E_NOTICE);
@@ -60,7 +66,9 @@ define('LOG_PATH',      DOC_ROOT . '/' . LOG_DIR);
  * 当php脚本调用一个类，而该类并无require进来，php引擎就会自动调用该函数
  * 本函数对按照框架约定的类名，自动找到类所在的文件，并包含进来
  * 
- * 搜索路径： 1) ./models 目录  2) php定义的path目录
+ * 搜索路径： 
+ *   (1) ./models 目录  
+ *   (2) php.ini定义的include_path目录
  *
  * @param string $className 类名
  */
@@ -86,8 +94,8 @@ function __autoload($className) {
  *
  * @package    null
  * @copyright  Copyright (c) 2014-2016 Touzhijia Financial Information Ltd. Inc. (http://www.Touzhijia.com)
- * @author     jamesqin(qinwq@touzhijia.com)
- * @version    1.0
+ * @author     jamesqin <qinwq@touzhijia.com>
+ * @version    1.0.0
  */
 class Framework
 {

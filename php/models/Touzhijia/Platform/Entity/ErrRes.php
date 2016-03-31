@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * 错误响应包定义
+ * 
+ * @category   Touzhijia
+ * @package    Touzhijia_Platform_Entity
+ * @author     JamesQin <qinwq@touzhijia.com>
+ * @copyright  (c) 2014-2016 Touzhijia Financial Information Ltd. Inc. (http://www.touzhijia.com)
+ * @version    1.0.0 2016-03-30 15:57:53
+ */
 class Touzhijia_Platform_Entity_ErrRes extends Touzhijia_Platform_Entity_BaseMsg
 {
 	public function __construct($errcode = null)
@@ -20,13 +29,17 @@ class Touzhijia_Platform_Entity_ErrRes extends Touzhijia_Platform_Entity_BaseMsg
 		);
 	}
 	
-	
-	public function setErrCode($v)
-	{
-		$this->_arrMsg['code']    = intval($v);
-		$this->_arrMsg['message'] = Touzhijia_Platform_Protocol_ErrorCode::getErrMsg(intval($v));
 
-		return true;
+	/**
+	 * 设置错误码
+	 *
+	 * @param integer $errCode 投之家协议定义的全局错误码
+	 * @return null
+	 */
+	public function setErrCode($errCode)
+	{
+		$this->_arrMsg['code']    = intval($errCode);
+		$this->_arrMsg['message'] = Touzhijia_Platform_Protocol_ErrorCode::getErrMsg(intval($errCode));
 	}
 
 }

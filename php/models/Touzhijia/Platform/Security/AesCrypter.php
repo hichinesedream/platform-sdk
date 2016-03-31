@@ -1,6 +1,14 @@
 <?php
 
-
+/**
+ * AES加密解密算法
+ * 
+ * @category   Touzhijia
+ * @package    Touzhijia_Platform_Security
+ * @author     JamesQin <qinwq@touzhijia.com>
+ * @copyright  (c) 2014-2016 Touzhijia Financial Information Ltd. Inc. (http://www.touzhijia.com)
+ * @version    1.0.0 2016-03-30 16:43:07
+ */
 class Touzhijia_Platform_Security_AesCrypter
 {
 	private $_key     = null;

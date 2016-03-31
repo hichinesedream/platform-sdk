@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * 投之家数据包协议，POST数据包体需要符合该格式
+ * 
+ * @category   Touzhijia
+ * @package    Touzhijia_Platform_Entity
+ * @author     JamesQin <qinwq@touzhijia.com>
+ * @copyright  (c) 2014-2016 Touzhijia Financial Information Ltd. Inc. (http://www.touzhijia.com)
+ * @version    1.0.0 2016-03-30 15:55:07
+ */
 class Touzhijia_Platform_Entity_Message extends Touzhijia_Platform_Entity_BaseMsg
 {
 	public function reset()

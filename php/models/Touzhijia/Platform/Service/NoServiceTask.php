@@ -1,12 +1,16 @@
 <?php
 
 
-class Touzhijia_Platform_Service_NoServiceTask
+class Touzhijia_Platform_Service_NoServiceTask implements Touzhijia_Platform_Service_BaseTask
 {
-	static public function doTask($arrReq)
+	public function validate()
 	{
-		// 正常返回
-		$res = new Touzhijia_Platform_Entity_ErrRes(Touzhijia_Platform_Protocol_ErrorCode::UNKNOWN_SERVICE_ERROR);
-		return $res;
+		return true;
+	}
+
+
+	public function doTask()
+	{
+		return new Touzhijia_Platform_Entity_ErrRes(Touzhijia_Platform_Protocol_ErrorCode::UNKNOWN_SERVICE_ERROR);
 	}
 }	
