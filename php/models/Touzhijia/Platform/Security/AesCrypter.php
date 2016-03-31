@@ -55,9 +55,9 @@ class Touzhijia_Platform_Security_AesCrypter
 		mcrypt_generic_init($this->_crypter, $this->_key, $iv);
 		$rawData = mdecrypt_generic($this->_crypter, $encryptedData);
 		mcrypt_generic_deinit($this->_crypter);
-		// echo Touzhijia_Platform_Util_String::strhex($rawData) . '<br>';
+		// echo Touzhijia_Util_String::strhex($rawData) . '<br>';
 		$rawData = Touzhijia_Platform_Security_Pkcs7Encoder::decode($rawData);
-		// echo Touzhijia_Platform_Util_String::strhex($rawData) . '<br>';
+		// echo Touzhijia_Util_String::strhex($rawData) . '<br>';
 
 		return $rawData;
 	}

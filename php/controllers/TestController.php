@@ -252,7 +252,7 @@ class TestController
 		}
 
 		// 投之家向合作平台发起请求
-		list($httpCode, $jsonString) = Touzhijia_Platform_Util_Http::doPost($this->_service_url, $postData);
+		list($httpCode, $jsonString) = Touzhijia_Util_Http::doPost($this->_service_url, $postData);
 		echo "<hr>请求包为：<br>\n";
 		echo $req->toJson(). "<br><br>\n";
 
@@ -272,7 +272,7 @@ class TestController
 			// 打印结果
 			echo "解密成功，接收到的数据包为：<br>\n";
 			$arrData = json_decode($data, true);
-			Touzhijia_Platform_Util_Array::print_rr($arrData);
+			Touzhijia_Util_Array::print_rr($arrData);
 		}
 	}
 

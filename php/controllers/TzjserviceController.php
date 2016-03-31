@@ -33,7 +33,7 @@ class TzjserviceController
 		}
 
 		// 根据service参数进行请求分发
-		$chain = new Touzhijia_Platform_Util_CmdChain();
+		$chain = new Touzhijia_Util_CmdChain();
 		$chain->setAction('createUser',   __CLASS__, 'createUser');
 		$chain->setAction('bindUser',     __CLASS__, 'bindUser');
 		$chain->setAction('login',        __CLASS__, 'login');
