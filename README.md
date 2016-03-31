@@ -517,8 +517,8 @@ type | 说明
 
 下表为每个接口公用的一些异常
 
-type| name | 说明 |
---- | ---- | --  |
+type| name | 说明 
+--- | ---- | ---  
 101 | MISSING_SERVICE_NAME     | 缺少 Service Name 
 102 | UNKNOWN_SERVICE_ERROR    | Service Name不存在
 103 | VALIDATE_SIGNATURE_ERROR | 签名验证失败
