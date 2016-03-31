@@ -238,7 +238,25 @@ code | message
 ### Response
 
 合作平台接收到该请求后，需要将用户带到投之家与合作平台的专属绑定页面，验证用户身份。验证成功后，完成绑定。
+用户授权绑定成功后平台需同步回调投之家的接口URL。
 
+此时请求的URL 所需参数为：
+### Service
+`service=bindUser`
+### Request
+```json
+{
+  "username": "string, required, 投之家用户名",
+  "usernamep": "string, required, 平台用户名",
+  "registerAt": "datetime, required, 平台注册时间",
+  "bindAt": "datetime, required, 绑定投之家时间",
+  "bindType": "enum, 1:表示平台已有用户",
+  "tags": "array, 标签"
+}
+```
+### Response
+
+投之家会输出提示用户绑定成功的页面
 
 ## 3.3 单点登录
 
