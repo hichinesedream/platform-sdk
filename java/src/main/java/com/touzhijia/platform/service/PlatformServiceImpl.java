@@ -1,5 +1,7 @@
 package com.touzhijia.platform.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.touzhijia.platform.entity.BidInfo;
@@ -38,25 +40,25 @@ public class PlatformServiceImpl implements PlatformService {
 	}
 
 	@Override
-	public UserInfo[] queryUser(QueryReq req) throws PlatformException {
+	public List<UserInfo> queryUser(QueryReq req) throws PlatformException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public BidInfo[] queryBids(QueryReq req) throws PlatformException {
+	public List<BidInfo> queryBids(QueryReq req) throws PlatformException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public InvestInfo[] queryInvests(QueryReq req) throws PlatformException {
+	public List<InvestInfo> queryInvests(QueryReq req) throws PlatformException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public RepayInfo[] queryRepays(QueryReq req) throws PlatformException {
+	public List<RepayInfo> queryRepays(QueryReq req) throws PlatformException {
 		// TODO Auto-generated method stub
 		return null;
 	}

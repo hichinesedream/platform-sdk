@@ -291,26 +291,22 @@ code | message
 
 ### Response
 ```json
-{
-  "username": "string, required, 投之家用户名",
-  "usernamep": "string, required, 平台用户名",
-  "registerAt": "datetime, required, 平台注册时间",
-  "bindAt": "datetime, required, 绑定投之家时间",
-  "bindType": "enum, 0:表示投之家带来的新用户，1:表示平台已有用户",
-  "assets": {
-	  "awaitAmount": "float，待收金额",
-	  "balanceAmount": "float, optional, 账户余额",
-	  "totalAmount": "float, optional, 资产总额"
-  },
-  "tags": "array, 标签"
-}
+[
+	{
+	  "username": "string, required, 投之家用户名",
+	  "usernamep": "string, required, 平台用户名",
+	  "registerAt": "datetime, required, 平台注册时间",
+	  "bindAt": "datetime, required, 绑定投之家时间",
+	  "bindType": "enum, 0:表示投之家带来的新用户，1:表示平台已有用户",
+	  "assets": {
+		  "awaitAmount": "float，待收金额",
+		  "balanceAmount": "float, optional, 账户余额",
+		  "totalAmount": "float, optional, 资产总额"
+	  },
+	  "tags": "array, 标签"
+	}
+]
 ```
-
-### Errors
-
-code | message
---- | ---
-4001 | 未找到该用户
 
 
 ## 3.5 标的信息查询
@@ -345,29 +341,31 @@ code | message
 ### Response
 
 ```json
-[{
-  "id": "string, 标的ID",
-  "url": "string, 标的URL",
-  "title": "string, 标题",
-  "desc": "string, 描述",
-  "borrower": "string, 借款人",
-  "borrowAmount": "float, 借款金额",
-  "remainAmount": "float, 剩余金额",
-  "minInvestAmount": "float, 起投金额",
-  "period": "string, 借款期限, 1d, 1m，如果为活期该字段为0",
-  "orignalRate": "float, 原始年化利率，13.5表示13.5%",
-  "rewardRate": "float, 奖励利率，13.5表示13.5%",
-  "status": "enum, 标的状态，见标的状态表格",
-  "repayment": "string, 还款方式",
-  "type": "enum, 见标的类型表格",
-  "prop": "string，标的性质，车贷，房贷，信用贷、融资租赁、保理等等",
-  "createAt": "datetime, 标的创建时间",
-  "publishAt": "datetime, 标的起投时间，如果有倒计时，这个时间会晚于标的创建时间",
-  "closeAt": "datetime, 标的截止购买时间",
-  "fullAt": "datetime, 标的满标时间",
-  "repayDate": "date, 预计还款日期",
-  "tags": "标签，数组，用以扩充标的属性。如：标的活动信息"
-}]
+[
+	{
+	  "id": "string, 标的ID",
+	  "url": "string, 标的URL",
+	  "title": "string, 标题",
+	  "desc": "string, 描述",
+	  "borrower": "string, 借款人",
+	  "borrowAmount": "float, 借款金额",
+	  "remainAmount": "float, 剩余金额",
+	  "minInvestAmount": "float, 起投金额",
+	  "period": "string, 借款期限, 1d, 1m，如果为活期该字段为0",
+	  "originalRate": "float, 原始年化利率，13.5表示13.5%",
+	  "rewardRate": "float, 奖励利率，13.5表示13.5%",
+	  "status": "enum, 标的状态，见标的状态表格",
+	  "repayment": "string, 还款方式",
+	  "type": "enum, 见标的类型表格",
+	  "prop": "string，标的性质,比如:车贷，房贷，信用贷、融资租赁、保理等等",
+	  "createAt": "datetime, 标的创建时间",
+	  "publishAt": "datetime, 标的起投时间，如果有倒计时，这个时间会晚于标的创建时间",
+	  "closeAt": "datetime, 标的截止购买时间",
+	  "fullAt": "datetime, 标的满标时间",
+	  "repayDate": "date, 预计还款日期",
+	  "tags": "标签，数组，用以扩充标的属性。如：标的活动信息"
+	}
+]
 ```
 
 #### 标的类型
@@ -426,18 +424,19 @@ status | 说明
 ### Response
 
 ```json
-[{
-  "id": "string, 订单ID，全局唯一",
-  "bid": "string, 标的ID",
-  "burl": "string, 标的url",
-  "username": "string, 投之家用户名",
-  "amount": "float, 投资金额",
-  "actualAmount": "float, 实际投资金额",
-  "income": "float, 预期投资收益",
-  "investAt": "datetime, 投资时间",
-  "repayAt": "datetime，预计回款时间",
-  "tags": "array, 标签"
-}]
+[
+	{
+	  "id": "string, 订单ID，全局唯一",
+	  "bid": "string, 标的ID",
+	  "burl": "string, 标的url",
+	  "username": "string, 合作平台用户名",
+	  "amount": "float, 投资金额",
+	  "actualAmount": "float, 实际投资金额",
+	  "income": "float, 预期投资收益",
+	  "investAt": "datetime, 投资时间",
+	  "tags": "array, 标签"
+	}
+]
 ```
 
 ## 3.7 回款记录查询
@@ -455,7 +454,7 @@ status | 说明
 		"endTime": "结束时间"
 	},
 	"index": {
-		"field": "id OR investId OR username",
+		"field": "id OR bid OR username",
 		"vals": "array，见下面的说明"
 	}
 }
@@ -464,23 +463,25 @@ status | 说明
 可以根据时间的范围查询（timeRange）这个时间范围内发生的所有回款记录，也可以根据索引进行如下查询
 
 - id查询（field="id"），查询指定回款ID的回款记录，一个id对应一条回款记录
-- investId查询（field="investId"），查询指定投资ID对应的回款记录，一个ID对应一条或者多条（比如：分多期回款的）回款记录
+- bid查询（field="bid"），查询指定标的ID对应的回款记录，一个标的ID对应一条或者多条（比如：分多期回款的）回款记录
 - username（field="username"），查询制定用户的一段时间范围内的回款记录，**必须有timeRange参数**
 
 ### Response
 
 ```json
-{
-	"id": "string, 订单ID，全局唯一",
-	"investId": "string，投资ID",
-	"username": "string, 投之家用户名",
-	"amount": "float, 回款金额",
-	"rate": "float, 回款利率",
-	"income": "float, 回款收益，可为负数",
-	"repayAt": "datetime, 回款时间",
-	"type": "enum，回款类型，见回款类型表格",
-	"tags": "array, 标签"
-}
+[
+	{
+		"id": "string, 订单ID，全局唯一",
+		"investId": "string，投资ID",
+		"bid": "string，标的ID",
+		"username": "string, 合作平台用户名",
+		"amount": "float, 回款金额",
+		"income": "float, 回款收益，可为负数",
+		"repayAt": "datetime, 回款时间",
+		"type": "enum，回款类型，见回款类型表格",
+		"tags": "array, 标签"
+	}
+]
 ```
 
 #### 回款类型
@@ -489,3 +490,13 @@ type | 说明
 --- | ---
 0 | 普通回款，因标的正常到期收到回款
 1 | 转让回款，因用户主动债权转让收到回款
+
+# 4. 异常
+
+下表为每个接口公用的一些异常
+
+type | 说明
+--- | ---
+101 | 参数格式错误
+102 | 用户不存在
+500 | 系统异常

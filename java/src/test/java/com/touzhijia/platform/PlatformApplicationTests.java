@@ -65,9 +65,6 @@ public class PlatformApplicationTests {
 		ServiceData resp = getResponse(actions);
 		
 		assertEquals("createUser", resp.getService());
-		UserInfo u = gson.fromJson(resp.getBody(), UserInfo.class);
-		assertEquals("leonardo", u.getUsername());
-		assertEquals("tzj_leonardo", u.getUsernamep());
 	}
 	
 	@Test
@@ -77,7 +74,13 @@ public class PlatformApplicationTests {
 	
 	@Test
 	public void queryUser() throws Exception {
-		sendRequest("queryUser", new QueryReq());
+		QueryReq req = new QueryReq();
+		QueryReq.Index index = req.new Index();
+		index.setName("id");
+		String[] vals = {"abc", "134"};
+		index.setVals(vals);
+		req.setIndex(index);
+		sendRequest("queryUser", req);
 	}
 	
 	private ResultActions sendRequest(String service, Object body) throws Exception {
