@@ -1,9 +1,25 @@
 <?php
 
-
+/**
+ * 模拟http请求
+ * 
+ * @category   Touzhijia
+ * @package    Touzhijia_Platform_Util
+ * @author     JamesQin <qinwq@touzhijia.com>
+ * @copyright  (c) 2014-2016 Touzhijia Financial Information Ltd. Inc. (http://www.touzhijia.com)
+ * @version    1.0.0 2016-03-30 16:13:46
+ */
 class Touzhijia_Platform_Util_Http
 {
-	static public function doPost($url, $postdata)
+	/**
+	 * 模拟http请求
+	 *
+	 * @param string  $url 目标url
+	 * @param string  $postdata 需要post的数据
+	 * @param integer $timeout http请求超时时间(秒)
+	 * @return array(integer, string) (http返回码, 获取到的页面内容)
+	 */
+	static public function doPost($url, $postdata, $timeout = 3)
 	{
 		$ch = curl_init();
 
@@ -19,7 +35,7 @@ class Touzhijia_Platform_Util_Http
 				CURLOPT_COOKIEFILE      => null,
 				CURLOPT_FOLLOWLOCATION  => 1,
 				CURLOPT_RETURNTRANSFER  => true,
-				CURLOPT_TIMEOUT         => 30,
+				CURLOPT_TIMEOUT         => $timeout,
 				CURLOPT_USERAGENT       => $userAgent
 				);
 

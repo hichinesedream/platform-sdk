@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * 创建新用户请求包定义
+ * 
+ * @category   Touzhijia
+ * @package    Touzhijia_Platform_Entity
+ * @author     JamesQin <qinwq@touzhijia.com>
+ * @copyright  (c) 2014-2016 Touzhijia Financial Information Ltd. Inc. (http://www.touzhijia.com)
+ * @version    1.0.0 2016-03-30 15:51:39
+ */
+
 class Touzhijia_Platform_Entity_CreateUserReq extends Touzhijia_Platform_Entity_BaseMsg
 {
 	const SERVICE_NAME = 'createUser';
@@ -7,7 +17,7 @@ class Touzhijia_Platform_Entity_CreateUserReq extends Touzhijia_Platform_Entity_
 	public function reset()
 	{
 		$this->_arrMsg = array(
-				'service' => strtolower(self::SERVICE_NAME),
+				'service' => self::SERVICE_NAME,
 				'body'    => array(
 					'username'  => null,		// string, 投之家用户名
 					'telephone' => null,		// string, 手机
@@ -51,6 +61,38 @@ class Touzhijia_Platform_Entity_CreateUserReq extends Touzhijia_Platform_Entity_
 		$this->_arrMsg['body']['bankCard']['number'] = $number;
 		$this->_arrMsg['body']['bankCard']['bank']   = $bank;
 		$this->_arrMsg['body']['bankCard']['branch'] = $branch;
+	}
+	
+	public function getUserName()
+	{
+		return $this->_arrMsg['body']['username'];
+	}
+	
+	public function getTelephone()
+	{
+		return $this->_arrMsg['body']['telephone'];
+	}
+		
+	public function getEmail()
+	{
+		return $this->_arrMsg['body']['email'];
+	}
+	
+	public function getIdCard()
+	{
+		return array(
+				$this->_arrMsg['body']['idCard']['number'],
+				$this->_arrMsg['body']['idCard']['name']
+			    );
+	}
+	
+	public function getBankCard()
+	{
+		return array(
+				$this->_arrMsg['body']['bankCard']['number'],
+				$this->_arrMsg['body']['bankCard']['bank'],
+				$this->_arrMsg['body']['bankCard']['branch']
+			    );
 	}
 	
 }

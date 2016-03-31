@@ -51,6 +51,7 @@ public class QueryReq {
 		}
 	}
 	
+	
 	private TimeRange timeRange;
 	
 	private Index index;
@@ -75,7 +76,7 @@ public class QueryReq {
 		if (index == null && timeRange == null) {
 			throw new PlatformException(101, "参数有误");
 		}
-		if (timeRange.startTime.after(timeRange.endTime)) {
+		if (timeRange != null && timeRange.startTime.after(timeRange.endTime)) {
 			throw new PlatformException(101, "参数有误");
 		}
 	}

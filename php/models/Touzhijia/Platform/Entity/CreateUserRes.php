@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * 创建新用户响应包定义
+ * 
+ * @category   Touzhijia
+ * @package    Touzhijia_Platform_Entity
+ * @author     JamesQin <qinwq@touzhijia.com>
+ * @copyright  (c) 2014-2016 Touzhijia Financial Information Ltd. Inc. (http://www.touzhijia.com)
+ * @version    1.0.0 2016-03-30 15:56:32
+ */
 class Touzhijia_Platform_Entity_CreateUserRes extends Touzhijia_Platform_Entity_BaseMsg
 {
 	const SERVICE_NAME = 'createUser';
@@ -7,7 +16,7 @@ class Touzhijia_Platform_Entity_CreateUserRes extends Touzhijia_Platform_Entity_
 	public function reset()
 	{
 		$this->_arrMsg = array(
-				'service' => strtolower(self::SERVICE_NAME),
+				'service' => self::SERVICE_NAME,
 				'body'    => array(
 					'username'   => null,	// string, 投之家用户名
 					'usernamep'  => null,	// string, 合作平台用户名

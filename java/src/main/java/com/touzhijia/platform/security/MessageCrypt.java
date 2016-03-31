@@ -4,15 +4,13 @@ import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
-import java.util.Base64;
-import java.util.Base64.Decoder;
-import java.util.Base64.Encoder;
 import java.util.Random;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -25,8 +23,6 @@ import com.touzhijia.platform.entity.ServiceData;
 @Component
 public class MessageCrypt {
 	private static Charset CHARSET = Charset.forName("utf-8");
-	private Encoder base64Encoder = Base64.getEncoder();
-	private Decoder base64Decoder = Base64.getDecoder();
 
 	@Value("${aesKey}")
 	private String aesKey;
@@ -62,7 +58,7 @@ public class MessageCrypt {
 			IvParameterSpec iv = new IvParameterSpec(Arrays.copyOfRange(reqKey, 0, 16));
 			cipher.init(Cipher.ENCRYPT_MODE, key_spec, iv);
 			byte[] encrypted = cipher.doFinal(original);
-			String data = base64Encoder.encodeToString(encrypted);
+			String data = Base64.encodeBase64String(encrypted);
 			msg.setData(data);
 			String signature = SHA1.getSHA1(token, msg);
 			msg.setSignature(signature);
@@ -85,7 +81,7 @@ public class MessageCrypt {
 			SecretKeySpec key_spec = new SecretKeySpec(reqKey, "AES");
 			IvParameterSpec iv = new IvParameterSpec(Arrays.copyOfRange(reqKey, 0, 16));
 			cipher.init(Cipher.DECRYPT_MODE, key_spec, iv);
-			byte[] encrypted = base64Decoder.decode((msg.getData()));
+			byte[] encrypted = Base64.decodeBase64((msg.getData()));
 			byte[] original = cipher.doFinal(encrypted);
 			
 			// 去除补位字符
