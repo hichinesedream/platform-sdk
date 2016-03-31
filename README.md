@@ -238,7 +238,10 @@ code | message
 ### Response
 
 合作平台接收到该请求后，需要将用户带到投之家与合作平台的专属绑定页面，验证用户身份。验证成功后，完成绑定。
-用户授权绑定成功后平台需同步回调投之家的接口URL。
+用户授权绑定成功后平台需同步回调投之家的接口URL.
+
+	 线上地址：http://open.api.touzhijia.com/callback
+	 测试地址：http://test.touzhijia.com:23090/api/callback
 
 此时请求的URL 所需参数为：
 ### Service
@@ -513,8 +516,25 @@ type | 说明
 
 下表为每个接口公用的一些异常
 
-type | 说明
---- | ---
-101 | 参数格式错误
-102 | 用户不存在
-500 | 系统异常
+type| name | 说明
+--- | ---- | --
+101 | MISSING_SERVICE_NAME | 缺少 Service Name 
+102 | UNKNOWN_SERVICE_ERROR| Service Name不存在
+103 | VALIDATE_SIGNATURE_ERROR| 签名验证失败
+104 | VALIDATE_TIMESTAMP_ERROR| 时间戳过期
+105 | VALIDATE_APPID_ERROR| AppID校验失败
+106 | PARSE_JSON_ERROR| JSON反序列化出错
+107 | GEN_RETURN_MSG_ERROR| 生成返回包失败
+108 | COMPUTE_SIGNATURE_ERROR| 生成签名失败
+109 | ENCRYPT_AES_ERROR| 加密失败
+110 | DECRYPT_AES_ERROR| 解密失败
+201 | INVALID_PARAMETER| 请求参数出错
+202 | USER_NOT_EXISTS| 用户不存在
+203 | START_GREAT_THAN_END| startTime 不能大于endTime
+204 | TIME_RANGE_EXCEED| 时间查询跨度不能超过72小时
+205 | QUERY_ITEM_COUNT_EXCEED| 
+500 | APPLICATION_ERROR | 系统异常
+1001 | TELEPHONE_HAVE_USED | 手机号已占用
+1002 | EMAIL_HAVE_USED | 邮箱号已占用
+1003 | IDCARD_HAVE_USED | 身份证号已占用
+4001 | MISSING_USER | 用户不存在
