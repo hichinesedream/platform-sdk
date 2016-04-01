@@ -351,7 +351,7 @@ code | message
 		"endTime": "结束时间"
 	},
 	"index": {
-		"field": "这里只会根据标的ID查询，固定为id",
+		"name": "这里只会根据标的ID查询，固定为id",
 		"vals": "array，标ID数组"
 	}
 }
@@ -431,7 +431,7 @@ status | 说明
 		"endTime": "结束时间"
 	},
 	"index": {
-		"field": "id OR bid OR username",
+		"name": "id OR bid OR username",
 		"vals": "array，见下面的说明"
 	}
 }
@@ -439,9 +439,9 @@ status | 说明
 
 可以根据时间的范围查询（timeRange）这个时间范围内发生的所有投资记录，也可以根据索引查询，进行如下查询
 
-- id查询（field="id"），查询指定投资ID的投资记录，一个id对应一条投资记录
-- bid查询（field="bid"），查询指定标的ID的投资记录列表，一个bid对于多条投资记录
-- username（field="username"），查询制定用户的一段时间范围内的投资记录，**必须有timeRange参数**
+- id查询（name="id"），查询指定投资ID的投资记录，一个id对应一条投资记录
+- bid查询（name="bid"），查询指定标的ID的投资记录列表，一个bid对于多条投资记录
+- username（name="username"），查询制定用户的一段时间范围内的投资记录，**必须有timeRange参数**
 
 ### Response
 
@@ -476,7 +476,7 @@ status | 说明
 		"endTime": "结束时间"
 	},
 	"index": {
-		"field": "id OR bid OR username",
+		"name": "id OR bid OR username",
 		"vals": "array，见下面的说明"
 	}
 }
