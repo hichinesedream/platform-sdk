@@ -56,7 +56,7 @@ class Touzhijia_Platform_Protocol_MsgCrypter
 	
 		// 生成扰码
 		if (empty($nonce)) {
-			$nonce = Touzhijia_Platform_Util_String::getRandomStr(4);
+			$nonce = Touzhijia_Util_String::getRandomStr(4);
 		}
 
 		// 加密 EncryptData = AESEncrypt(RawData, ReqKey);

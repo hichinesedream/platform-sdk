@@ -4,12 +4,12 @@
  * 数组相关功能
  * 
  * @category   Touzhijia
- * @package    Touzhijia_Platform_Util
+ * @package    Touzhijia_Util
  * @author     JamesQin <qinwq@touzhijia.com>
  * @copyright  (c) 2014-2016 Touzhijia Financial Information Ltd. Inc. (http://www.touzhijia.com)
  * @version    1.0.0 2016-03-30 16:09:39
  */
-class Touzhijia_Platform_Util_Array
+class Touzhijia_Util_Array
 {
 	static public function print_rr($v)
 	{

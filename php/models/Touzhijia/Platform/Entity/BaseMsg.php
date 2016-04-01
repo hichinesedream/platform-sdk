@@ -53,7 +53,7 @@ class Touzhijia_Platform_Entity_BaseMsg
 		}
 
 		// 检查必选字段是否存在
-		if (false == Touzhijia_Platform_Util_Array::isAllKeyExistsInArray($this->_arrMsg, $arrMsg)) {
+		if (false == Touzhijia_Util_Array::isAllKeyExistsInArray($this->_arrMsg, $arrMsg)) {
 			return Touzhijia_Platform_Protocol_ErrorCode::PARSE_JSON_ERROR;
 		}
 

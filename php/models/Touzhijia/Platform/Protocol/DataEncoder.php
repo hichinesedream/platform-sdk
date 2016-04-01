@@ -21,7 +21,7 @@ class Touzhijia_Platform_Protocol_DataEncoder
 	static public function encode($text, $appid)
 	{
 		//获得16位随机字符串，填充到明文之前
-		$random = Touzhijia_Platform_Util_String::getRandomStr(16);
+		$random = Touzhijia_Util_String::getRandomStr(16);
 		$data = $random . pack("N", strlen($text)) . $text . $appid;
 		return $data;
 	}
