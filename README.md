@@ -235,6 +235,10 @@ code | message
 }
 ```
 
+请求回调的Method 为 `POST` 参数为
+`data=xxx&nonce=xxx&signature=xxx&timestamp=12345643`
+
+
 ### Response
 
 合作平台接收到该请求后，需要将用户带到投之家与合作平台的专属绑定页面，验证用户身份。验证成功后，完成绑定。
@@ -257,6 +261,11 @@ code | message
   "tags": "array, 标签"
 }
 ```
+
+请求回调的Method 为 `POST` 参数为
+`data=xxx&nonce=xxx&signature=xxx&timestamp=12345643&platID=xxxx`
+
+
 ### Response
 
 投之家会输出提示用户绑定成功的页面
@@ -280,6 +289,10 @@ code | message
   "type": "登录类型，0:PC，1:WAP"
 }
 ```
+
+
+请求回调的Method 为 `POST` 参数为
+`data=xxx&nonce=xxx&signature=xxx&timestamp=12345643`
 
 ### Response
 
@@ -538,4 +551,3 @@ type| name | 说明
 1001 | TELEPHONE_HAVE_USED     | 手机号已占用
 1002 | EMAIL_HAVE_USED 		   | 邮箱号已占用
 1003 | IDCARD_HAVE_USED 	   | 身份证号已占用
-4001 | MISSING_USER 		   | 用户不存在
