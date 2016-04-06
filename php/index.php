@@ -40,11 +40,12 @@ error_reporting(E_ALL | E_NOTICE);
 date_default_timezone_set('Asia/Chongqing');
  
 // URL配置
-define('WEB_ROOT',	(dirname($_SERVER['SCRIPT_NAME']) == '/') ? '' : dirname($_SERVER['SCRIPT_NAME']));
+$scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+define('WEB_ROOT',	($scriptDir == '/') ? '' : $scriptDir);
 define('DOC_ROOT',	$_SERVER['DOCUMENT_ROOT'] . WEB_ROOT);
 define('CUR_URL',	($_SERVER['SERVER_PORT'] == 80)
-			? "http://{$_SERVER['SERVER_NAME']}{$_SERVER['REQUEST_URI']}"
-			: "http://{$_SERVER['SERVER_NAME']}:{$_SERVER['SERVER_PORT']}{$_SERVER['REQUEST_URI']}");
+			? "http://{$_SERVER['SERVER_NAME']}" . rtrim($_SERVER['REQUEST_URI'], "/")
+			: "http://{$_SERVER['SERVER_NAME']}:{$_SERVER['SERVER_PORT']}" . rtrim($_SERVER['REQUEST_URI'], "/"));
 
 // 相对路径配置
 define('CONF_DIR',	'config');
@@ -101,7 +102,7 @@ class Framework
 {
 	static public function getPathInfo()
 	{
-		if (isset($_SERVER['PATH_INFO']) && !empty($_SERVER['PATH_INFO'])) {
+		if (isset($_SERVER['PATH_INFO'])) {
 			return $_SERVER['PATH_INFO'];
 		}
 

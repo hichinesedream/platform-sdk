@@ -141,15 +141,17 @@ class Touzhijia_Platform_Service_QueryBidsTask implements Touzhijia_Platform_Ser
 		$row->setPeriod('1.5m');
 		$row->setOriginalRate('13.5');
 		$row->setRewardRate('1.2');
-		$row->setStatus(Touzhijia_Platform_Entity_BidInfo::BID_STATUS_HAS_PAID_OFF);
+		$row->setStatus(Touzhijia_Platform_Entity_BidInfo::BID_STATUS_RAISE_PROCESSING);
 		$row->setRepayment('按月付息到期还本');
-		$row->setType(Touzhijia_Platform_Entity_BidInfo::BID_TYPE_EXPERIENCE);
+		$row->setType(Touzhijia_Platform_Entity_BidInfo::BID_TYPE_TRANSFER);
 		$row->setProp('红本抵押');
 		$row->setCreateAt(date('Y-m-d H:i:s', strtotime('1 days ago')));
 		$row->setPublishAt(date('Y-m-d H:i:s', strtotime('28 minutes ago')));
 		$row->setCloseAt(date('Y-m-d H:i:s', strtotime('1 hours')));
 		$row->setFullAt(date('Y-m-d H:i:s', strtotime('8 minutes ago')));
 		$row->setRepayDate(date('Y-m-d H:i:s', strtotime('30 days')));
+		
+		// 其他标签, 这里示例用调试信息代替, 线上环境请填写有意义的信息
 		$row->setTags(array($debug_msg));
 
 		return $row;
