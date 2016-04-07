@@ -13,7 +13,7 @@ public class BidInfo {
 	private Float minInvestAmount;
 	private String period;
 	private Float orginalRate;
-	private Float awardReate;
+	private Float rewardRate;
 	private int status;
 	private int repayment;
 	private int type;

@@ -514,7 +514,7 @@ status | 说明
 		"investId": "string，投资ID",
 		"bid": "string，标的ID",
 		"username": "string, 合作平台用户名",
-		"amount": "float, 回款金额",
+		"amount": "float, 回款金额(本金)",
 		"income": "float, 回款收益，可为负数",
 		"repayAt": "datetime, 回款时间",
 		"type": "enum，回款类型，见回款类型表格",
