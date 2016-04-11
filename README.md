@@ -263,7 +263,7 @@ code | message
 ```
 
 请求回调的Method 为 `POST` 参数为
-`data=xxx&nonce=xxx&signature=xxx&timestamp=12345643&platID=xxxx`
+`data=xxx&nonce=xxx&signature=xxx&timestamp=12345643&appId=xxxx`
 
 
 ### Response
