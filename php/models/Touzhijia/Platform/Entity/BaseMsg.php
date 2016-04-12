@@ -36,6 +36,17 @@ class Touzhijia_Platform_Entity_BaseMsg
 		$error = 'This method [' . __METHOD__ . '] must be overrided in your inheritance class ';
 		throw new Exception($error);
 	}
+	
+	
+	/**
+	 * 获取消息体的服务名
+	 *
+	 * @return string
+	 */
+	public function getServiceName()
+	{
+		return $this->_arrMsg['service'];
+	}
 
 
 	/**
