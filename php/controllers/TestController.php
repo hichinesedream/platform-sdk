@@ -76,13 +76,42 @@ class TestController
 	// 模拟请求：绑定老用户
 	public function binduserAction()
 	{
+		// 绑定老用户是通过浏览器跳转完成的, 不是api接口调用, 原因是绑定老用户需要合作平台弹登陆窗验证用户身份
 		$req = new Touzhijia_Platform_Entity_BindUserReq();
 		$req->setUserName('longsky');
 		$req->setTelephone('18912345678');
 		$req->setEmail('test@qq.com');
 		$req->setIdCard('450000198701015566', '张三');
 		$req->setBankCard('6226096511223344', '招商银行', '深圳分行高新支行');
-		$this->doRequest($req);
+
+		// 构造请求
+		list($ret, $postData) = $this->_crypter->encrypt($req->toJson());
+		if ($ret != 0) {
+			$this->showError($ret);
+		}
+
+		$arrPostData = json_decode($postData, true);
+
+		// 表单提交和api提交都可以复用同一个service_url
+		echo <<<EOD
+<form action="{$this->_service_url}" method="post" style="width: 550px;">
+<fieldset>
+	<legend align="center">
+		这里是投之家的页面, 即将跳转去合作平台用户绑定页面
+	</legend>
+	<div align="right">
+		<p>data:      <input type="text" size=64 name="data" value="{$arrPostData['data']}"/></p>
+		<p>timestamp: <input type="text" size=64 name="timestamp" value="{$arrPostData['timestamp']}"/></p>
+		<p>nonce:     <input type="text" size=64 name="nonce" value="{$arrPostData['nonce']}"/></p>
+		<p>signature: <input type="text" size=64 name="signature" value="{$arrPostData['signature']}"/></p>
+	</div>
+	<p>备注：以上参数在线上运行时会以表单隐藏域的方式POST到合作平台</p>
+	<div align="center">
+		<input type="submit" value="投之家用户 {$req->getUserName()} 已有合作平台帐户, 前往绑定" />
+	</div>
+</fieldset>
+</form>
+EOD;
 	}
 	
 
@@ -91,29 +120,58 @@ class TestController
 	{
 		$req = new Touzhijia_Platform_Entity_LoginReq();
 
-		// TestCase 1: 登录并跳转到合作平台首页
 		$req->reset();
 		$req->setUserName('longsky');
 		$req->setUserNamep('tzjlongsky');
-		$req->setBid(Touzhijia_Platform_Entity_LoginReq::LOGIN_TO_HOMEPAGE);
 		$req->setType(Touzhijia_Platform_Entity_LoginReq::LOGIN_DEVICE_TYPE_PC);
-		$this->doRequest($req);
 
-		// TestCase 2: 登录并跳转到合作平台个人中心
-		$req->reset();
-		$req->setUserName('longsky');
-		$req->setUserNamep('tzjlongsky');
-		$req->setBid(Touzhijia_Platform_Entity_LoginReq::LOGIN_TO_USER_CENTER);
-		$req->setType(Touzhijia_Platform_Entity_LoginReq::LOGIN_DEVICE_TYPE_WAP);
-		$this->doRequest($req);
+		// 随机模拟登录目标url
+		switch (rand(0, 2)) {
+			case 0:
+				// TestCase 1: 登录并跳转到合作平台首页
+				$req->setBid(Touzhijia_Platform_Entity_LoginReq::LOGIN_TO_HOMEPAGE);
+				$destPage = '首页';
+				break;
+			case 1:
+				// TestCase 2: 登录并跳转到合作平台个人中心
+				$req->setBid(Touzhijia_Platform_Entity_LoginReq::LOGIN_TO_USER_CENTER);
+				$destPage = '个人中心';
+				break;
+			default:
+				// TestCase 3: 登录并跳转到合作平台标的详情页
+				$req->setBid("51144");
+				$destPage = '标的详情页';
+				break;
+		}
 
-		// TestCase 3: 登录并跳转到合作平台标的详情页
-		$req->reset();
-		$req->setUserName('longsky');
-		$req->setUserNamep('tzjlongsky');
-		$req->setBid("51144");
-		$req->setType(Touzhijia_Platform_Entity_LoginReq::LOGIN_DEVICE_TYPE_WAP);
-		$this->doRequest($req);
+		// 构造请求
+		list($ret, $postData) = $this->_crypter->encrypt($req->toJson());
+		if ($ret != 0) {
+			$this->showError($ret);
+		}
+
+		$arrPostData = json_decode($postData, true);
+
+		// 表单提交和api提交都可以复用同一个service_url
+		echo <<<EOD
+<form action="{$this->_service_url}" method="post" style="width: 550px;">
+<fieldset>
+	<legend align="center">
+		这里是投之家的页面, 即将跳转去合作平台$destPage
+	</legend>
+	<div align="right">
+		<p>data:      <input type="text" size=64 name="data" value="{$arrPostData['data']}"/></p>
+		<p>timestamp: <input type="text" size=64 name="timestamp" value="{$arrPostData['timestamp']}"/></p>
+		<p>nonce:     <input type="text" size=64 name="nonce" value="{$arrPostData['nonce']}"/></p>
+		<p>signature: <input type="text" size=64 name="signature" value="{$arrPostData['signature']}"/></p>
+	</div>
+	<p>备注：以上参数在线上运行时会以表单隐藏域的方式POST到合作平台</p>
+	<div align="center">
+		<input type="submit" value="投之家用户 {$req->getUserName()} 即将自动登陆到合作平台$destPage" />
+	</div>
+</fieldset>
+</form>
+EOD;
 	}
 	
 

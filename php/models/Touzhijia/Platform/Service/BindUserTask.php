@@ -41,7 +41,8 @@ class Touzhijia_Platform_Service_BindUserTask implements Touzhijia_Platform_Serv
 			return new Touzhijia_Platform_Entity_ErrRes($res);
 		}
 
-		// 跳转到合作平台与投之家的专属关联页面
+		// 跳转到合作平台与投之家的专属关联页面, 绑定完成需要跳回投之家, 以便投之家记录绑定关系成立
+		// 如果之前已经绑定过, 说明投之家丢失了该笔绑定关系, 那么不需要再弹一次登录验证, 直接callback回传一次绑定关系即可
 		return new Touzhijia_Platform_Entity_RedirectRes(TZJ_PROTOCOL_BIND_USER_URL);
 	}
 
