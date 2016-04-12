@@ -28,6 +28,9 @@ class Touzhijia_Platform_Entity_BidInfo
 	CONST BID_STATUS_RAISE_PROCESSING = 3;	// 投标中
 	CONST BID_STATUS_RASIE_NOT_ENOUGH = 4;	// 流标
 	CONST BID_STATUS_RASIE_CANCEL     = 5;	// 撤标
+	CONST BID_STATUS_RAISE_FULL       = 6;	// 满标
+	CONST BID_STATUS_HAS_RELEASE      = 7;	// 放款
+	CONST BID_STATUS_OTHER            = 99;	// 其他
 
 
 	/**
