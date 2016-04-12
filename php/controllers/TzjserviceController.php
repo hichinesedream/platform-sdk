@@ -17,6 +17,16 @@ class TzjserviceController
 		// 获取POST数据
 		$postRawString = file_get_contents('php://input');
 
+		// 如果POST请求不是裸数据方式提交, 则以form表单提交方式来接收
+		if (!empty($_POST)) {
+			$msg = new Touzhijia_Platform_Entity_Message();
+			$msg->setData(isset($_POST['data']) ? $_POST['data'] : null);
+			$msg->setTimestamp(isset($_POST['timestamp']) ? $_POST['timestamp'] : null);
+			$msg->setNonce(isset($_POST['nonce']) ? $_POST['nonce'] : null);
+			$msg->setSignature(isset($_POST['signature']) ? $_POST['signature'] : null);
+			$postRawString = $msg->toJson();
+		}
+
 		// 解密数据包
 		$crypter = new Touzhijia_Platform_Protocol_MsgCrypter(TZJ_PROTOCOL_TOKEN, TZJ_PROTOCOL_AES_KEY, TZJ_PROTOCOL_PLAT_ID);
 		list($ret, $strReqJson) = $crypter->decrypt($postRawString);
