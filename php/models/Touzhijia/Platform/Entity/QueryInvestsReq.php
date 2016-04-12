@@ -23,8 +23,8 @@ class Touzhijia_Platform_Entity_QueryInvestsReq extends Touzhijia_Platform_Entit
 						"endTime" => null	// datetime, 结束时间
 						),
 					"index" => array(
-						"field" => null,	// string, 查询字段，本版本固定为：id|bid|username
-						"vals" => null		// array, 查询内容，与field字段形成 WHERE $field IN implode(',', $vals) 的条件
+						"name" => null,		// string, 查询字段，本版本固定为：id|bid|username
+						"vals" => null		// array, 查询内容，与name字段形成 WHERE $name IN implode(',', $vals) 的条件
 						),
 					)
 				);
@@ -32,7 +32,7 @@ class Touzhijia_Platform_Entity_QueryInvestsReq extends Touzhijia_Platform_Entit
 
 	public function hasIndexItem()
 	{
-		if (isset($this->_arrMsg['body']['index']['field']) && isset($this->_arrMsg['body']['index']['vals'])) {
+		if (isset($this->_arrMsg['body']['index']['name']) && isset($this->_arrMsg['body']['index']['vals'])) {
 			return true;
 		}
 
@@ -56,8 +56,8 @@ class Touzhijia_Platform_Entity_QueryInvestsReq extends Touzhijia_Platform_Entit
 			return false;
 		}
 
-		$this->_arrMsg['body']['index']['field'] = $strField;
-		$this->_arrMsg['body']['index']['vals']  = $arrVals;
+		$this->_arrMsg['body']['index']['name'] = $strField;
+		$this->_arrMsg['body']['index']['vals'] = $arrVals;
 		$this->_isIndexSet = true;
 
 		return true;
@@ -75,7 +75,7 @@ class Touzhijia_Platform_Entity_QueryInvestsReq extends Touzhijia_Platform_Entit
 	public function getIndex()
 	{
 		return array(
-				$this->_arrMsg['body']['index']['field'],
+				$this->_arrMsg['body']['index']['name'],
 				$this->_arrMsg['body']['index']['vals']
 			    );
 	}
