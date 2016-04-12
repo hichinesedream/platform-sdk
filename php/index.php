@@ -38,14 +38,37 @@
 // 环境设置
 error_reporting(E_ALL | E_NOTICE);
 date_default_timezone_set('Asia/Chongqing');
+
+// cli支持
+if (isset($_SERVER['SHELL'])) {
+	$_SERVER['SERVER_NAME'] = 'localhost';
+	$_SERVER['SERVER_PORT'] = 80;
+	$_SERVER['HTTP_HOST']   = 'localhost';
+	$_SERVER['REQUEST_URI'] = '';
+
+	if ($argc > 1) {
+		$_SERVER['PATH_INFO']   = $argv[1];
+		$_SERVER['REQUEST_URI'] = $argv[1];
+	}
+
+	if ($argc > 2) {
+		$arrQuery = parse_str($argv[2]);
+		if (is_array($arrQuery)) {
+			foreach ($arrQuery as $k => $v) {
+				$_REQUEST[$k] = $v;
+			}
+		}
+	}
+}
+
+// 不同的环境SCRIPT_NAME定义不一样,修正一下,统一为要请求的文件名
+$_SERVER['SCRIPT_NAME'] = substr($_SERVER['SCRIPT_FILENAME'], strlen(rtrim($_SERVER['DOCUMENT_ROOT'], "/")));
  
 // URL配置
 $scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
 define('WEB_ROOT',	($scriptDir == '/') ? '' : $scriptDir);
 define('DOC_ROOT',	$_SERVER['DOCUMENT_ROOT'] . WEB_ROOT);
-define('CUR_URL',	($_SERVER['SERVER_PORT'] == 80)
-			? "http://{$_SERVER['SERVER_NAME']}" . rtrim($_SERVER['REQUEST_URI'], "/")
-			: "http://{$_SERVER['SERVER_NAME']}:{$_SERVER['SERVER_PORT']}" . rtrim($_SERVER['REQUEST_URI'], "/"));
+define('CUR_URL',	"http://{$_SERVER['HTTP_HOST']}" . rtrim($_SERVER['REQUEST_URI'], "/"));
 
 // 相对路径配置
 define('CONF_DIR',	'config');
@@ -102,17 +125,27 @@ class Framework
 {
 	static public function getPathInfo()
 	{
+		// 如果存在PATH_INFO变量, 则直接使用
 		if (isset($_SERVER['PATH_INFO'])) {
 			return $_SERVER['PATH_INFO'];
 		}
 
+		// 否则自行构造,根据REQUEST_URI去头去尾,头是SCRIPT_NAME,尾是QUERY_STRING
+		$strPathInfo= $_SERVER['REQUEST_URI'];
+
+		// 先去头
 		$len = strlen($_SERVER['SCRIPT_NAME']);
-		if (substr($_SERVER['REQUEST_URI'], 0, $len) == $_SERVER['SCRIPT_NAME']) {
-			$pathinfo = substr($_SERVER['REQUEST_URI'], $len);
-			return $pathinfo;
+		if (substr($strPathInfo, 0, $len) == $_SERVER['SCRIPT_NAME']) {
+			$strPathInfo= substr($strPathInfo, $len);
 		}
 
-		return $_SERVER['REQUEST_URI'];
+		// 再去尾
+		$len = strlen($_SERVER['QUERY_STRING']);
+		if (substr($strPathInfo, -($len+1)) == "?{$_SERVER['QUERY_STRING']}") {
+			$strPathInfo= substr($strPathInfo, 0, strlen($strPathInfo) - ($len+1));
+		}
+
+		return $strPathInfo;
 	}
 
 
@@ -189,25 +222,6 @@ class Framework
 	}
 }
 
-
-// cli支持
-if (isset($_SERVER['SHELL'])) {
-	if ($argc > 1) {
-		$_SERVER['SERVER_NAME'] = 'localhost';
-		$_SERVER['SERVER_PORT'] = 80;
-		$_SERVER['PATH_INFO']   = $argv[1];
-		$_SERVER['REQUEST_URI'] = $argv[1];
-	}
-
-	if ($argc > 2) {
-		$arrQuery = parse_str($argv[2]);
-		if (is_array($arrQuery)) {
-			foreach ($arrQuery as $k => $v) {
-				$_REQUEST[$k] = $v;
-			}
-		}
-	}
-}
 
 // do it
 require_once(CONF_PATH . '/defines.php');
