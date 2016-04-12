@@ -30,6 +30,8 @@ class Touzhijia_Platform_Entity_BidInfo
 	CONST BID_STATUS_RASIE_CANCEL     = 5;	// 撤标
 	CONST BID_STATUS_RAISE_FULL       = 6;	// 满标
 	CONST BID_STATUS_HAS_RELEASE      = 7;	// 放款
+	CONST BID_STATUS_WAIT_RELEASE     = 8;	// 等待放款
+	CONST BID_STATUS_WAIT_START       = 9;	// 等待开始
 	CONST BID_STATUS_OTHER            = 99;	// 其他
 
 
