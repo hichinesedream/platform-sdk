@@ -244,7 +244,7 @@ code | message
 合作平台接收到该请求后，需要将用户带到投之家与合作平台的专属绑定页面，验证用户身份。验证成功后，完成绑定。
 用户授权绑定成功后平台需同步回调投之家的接口URL.
 
-	 线上地址：http://open.api.touzhijia.com/callback
+	 线上地址：http://open.api.touzhijia.cn/callback
 	 测试地址：http://test.touzhijia.com:23090/api/callback
 
 此时请求的URL 所需参数为：
