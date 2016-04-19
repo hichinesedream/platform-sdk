@@ -36,7 +36,7 @@ public class PlatformController {
     @Autowired
     private MessageCrypt messageCrypt;
     
-    private GsonBuilder gsonBuilder = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss");
+    private GsonBuilder gsonBuilder = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd HH:mm:ss");
     
     @Value("${expireTime}")
     private int expireTime;
@@ -65,7 +65,7 @@ public class PlatformController {
     	if (paramClasses.length != 1) {
     		throw new PlatformException(101, req.getService() + "方法参数错误");
     	}
-    	Gson gson = gsonBuilder.serializeNulls().registerTypeAdapter(Date.class, new DateTypeAdapter()).create();
+    	Gson gson = gsonBuilder.registerTypeAdapter(Date.class, new DateTypeAdapter()).create();
     	Object param = gson.fromJson(req.getBody(), paramClasses[0]);
     	if (param instanceof QueryReq) {
     		QueryReq q = (QueryReq)param;

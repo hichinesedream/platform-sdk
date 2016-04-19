@@ -36,10 +36,18 @@ public final class DateTypeAdapter extends TypeAdapter<Date> {
             = DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT);
     private final DateFormat iso8601Format = buildIso8601Format();
 
+    private final DateFormat defaultFormat = buildDefaultFormat();
+
     private static DateFormat buildIso8601Format() {
         DateFormat iso8601Format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US);
         iso8601Format.setTimeZone(TimeZone.getTimeZone("UTC"));
         return iso8601Format;
+    }
+
+    private static DateFormat buildDefaultFormat() {
+        DateFormat defaultFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        defaultFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        return defaultFormat;
     }
 
     @Override public Date read(JsonReader in) throws IOException {
@@ -56,6 +64,10 @@ public final class DateTypeAdapter extends TypeAdapter<Date> {
         }
         try {
             return localFormat.parse(json);
+        } catch (ParseException ignored) {
+        }
+        try {
+            return defaultFormat.parse(json);
         } catch (ParseException ignored) {
         }
         try {
