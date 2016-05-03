@@ -55,7 +55,7 @@ curl -x POST -d '<data>' '(http|https)://<url>'
 ```json
 {
 	"service": "string, required, 用于区分不同的接口调用",
-	"body": "string, optional, 请求数据，JSON格式，具体参考接口定义章节"
+	"body": "object, optional, 请求数据，JSON格式，具体参考接口定义章节"
 }
 ```
 
@@ -234,10 +234,6 @@ code | message
   }
 }
 ```
-
-请求回调的Method 为 `POST` 参数为
-`data=xxx&nonce=xxx&signature=xxx&timestamp=12345643`
-
 
 ### Response
 
