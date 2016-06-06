@@ -28,9 +28,9 @@ namespace touzhijia.entity
         [DataMember]
         public String period{ get; set; }
         [DataMember]
-        public float orginalRate{ get; set; }
+        public float originalRate{ get; set; }
         [DataMember]
-        public float awardReate{ get; set; }
+        public float awardRate{ get; set; }
         [DataMember]
         public int status{ get; set; }
         [DataMember]
@@ -46,7 +46,7 @@ namespace touzhijia.entity
         [DataMember]
         public DateTime fullAt{ get; set; }
         [DataMember]
-        public DateTime repayDay{ get; set; }
+        public DateTime repayDate{ get; set; }
         [DataMember]
         public String[] tags{ get; set; }
     }

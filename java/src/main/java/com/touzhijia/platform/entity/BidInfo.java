@@ -12,7 +12,7 @@ public class BidInfo {
 	private Float remainAmount;
 	private Float minInvestAmount;
 	private String period;
-	private Float orginalRate;
+	private Float originalRate;
 	private Float rewardRate;
 	private int status;
 	private int repayment;
@@ -21,7 +21,7 @@ public class BidInfo {
 	private Date publishAt;
 	private Date closeAt;
 	private Date fullAt;
-	private Date repayDay;
+	private Date repayDate;
 	private String[] tags;
 	
 	public String getId() {
@@ -78,17 +78,17 @@ public class BidInfo {
 	public void setPeriod(String period) {
 		this.period = period;
 	}
-	public Float getOrginalRate() {
-		return orginalRate;
+	public Float getOriginalRate() {
+		return originalRate;
 	}
-	public void setOrginalRate(Float orginalRate) {
-		this.orginalRate = orginalRate;
+	public void setOriginalRate(Float originalRate) {
+		this.originalRate = originalRate;
 	}
-	public Float getAwardReate() {
-		return awardReate;
+	public Float getAwardRate() {
+		return awardRate;
 	}
-	public void setAwardReate(Float awardReate) {
-		this.awardReate = awardReate;
+	public void setAwardRate(Float awardRate) {
+		this.awardRate = awardRate;
 	}
 	public int getStatus() {
 		return status;
@@ -132,11 +132,11 @@ public class BidInfo {
 	public void setFullAt(Date fullAt) {
 		this.fullAt = fullAt;
 	}
-	public Date getRepayDay() {
-		return repayDay;
+	public Date getRepayDate() {
+		return repayDate;
 	}
-	public void setRepayDay(Date repayDay) {
-		this.repayDay = repayDay;
+	public void setRepayDate(Date repayDate) {
+		this.repayDate = repayDate;
 	}
 	public String[] getTags() {
 		return tags;
