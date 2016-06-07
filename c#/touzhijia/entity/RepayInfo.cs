@@ -24,7 +24,7 @@ namespace touzhijia.entity
         // 回款时间
         public DateTime repayAt;
         // 标签
-        public String[] tags;
+        public List<String> tags;
 
     }
 }

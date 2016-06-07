@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Json;
 using System.Security.Cryptography;
 using System.Text;
 using touzhijia.entity;
@@ -70,7 +69,7 @@ namespace touzhijia
             {
                 return (int)TzjMsgCryptErrorCode.TzjMsgCrypt_DecodeBase64_Error;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return (int)TzjMsgCryptErrorCode.TzjMsgCrypt_DecryptAES_Error;
             }
@@ -93,7 +92,7 @@ namespace touzhijia
             {
                 raw = Cryptography.MsgEncrypt(Json.Encode<ServiceData>(sd), GetRequestKey(m_sEncodingAESKey, Convert.ToString(msg.timestamp)), m_sPlatID);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return (int)TzjMsgCryptErrorCode.TzjMsgCrypt_EncryptAES_Error;
             }
@@ -107,9 +106,16 @@ namespace touzhijia
             return 0;
         }
         //GET RequestKey
-        private static string GetRequestKey(string aes_key, string timestamp)
+        private static byte[] GetRequestKey(string aes_key, string timestamp)
         {
-            return System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(aes_key + timestamp, "MD5").ToLower();
+
+            //获取要加密的字段，并转化为Byte[]数组  
+            byte[] data = System.Text.Encoding.Unicode.GetBytes(aes_key.ToCharArray());
+            //建立加密服务  
+            System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            //加密Byte[]数组  
+            return md5.ComputeHash(data);
+            //return System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(aes_key + timestamp, "MD5").ToLower();
         }
 
         //Verify Signature

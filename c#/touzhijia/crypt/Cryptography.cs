@@ -31,10 +31,9 @@ namespace touzhijia
         /// <param name="EncodingAESKey"></param>
         /// <returns></returns>
         /// 
-        public static string MsgDecrypt(String Input, string EncodingAESKey, ref string appid)
+        public static string MsgDecrypt(String Input, byte[] EncodingAESKey, ref string appid)
         {
-            byte[] Key;
-            Key = Encoding.UTF8.GetBytes(EncodingAESKey);
+            byte[] Key = EncodingAESKey;
             byte[] Iv = new byte[16];
             Array.Copy(Key, Iv, 16);
             byte[] btmpMsg = AESDecrypt(Input, Iv, Key);
@@ -52,10 +51,9 @@ namespace touzhijia
             return oriMsg;
         }
 
-        public static String MsgEncrypt(String Input, string EncodingAESKey, string appid)
+        public static String MsgEncrypt(String Input, byte[] EncodingAESKey, string appid)
         {
-            byte[] Key;
-            Key = Encoding.UTF8.GetBytes(EncodingAESKey);
+            byte[] Key = EncodingAESKey;
             byte[] Iv = new byte[16];
             Array.Copy(Key, Iv, 16);
             string Randcode = CreateRandCode(16);

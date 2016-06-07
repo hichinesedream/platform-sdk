@@ -24,7 +24,6 @@ namespace touzhijia
             this.expire = expire;
             platformService = new PlatformServiceImpl();
         }
-        
         public void SetPlatformServiceImpl(PlatformService platformService)
         {
             this.platformService = platformService;
@@ -59,7 +58,7 @@ namespace touzhijia
             Type pt = method.GetParameters()[0].ParameterType;
 
             var jsonMethod = typeof(Json).GetMethod("Decode").MakeGenericMethod(pt);
-            object obj = jsonMethod.Invoke(typeof(Json), new object[] { req.body });
+            object obj = jsonMethod.Invoke(typeof(Json), new object[] { req.body.ToString() });
             object result = null;
             try
             {
@@ -84,7 +83,7 @@ namespace touzhijia
             }
             jsonMethod = typeof(Json).GetMethod("Encode").MakeGenericMethod(result.GetType());
             object jsonobj = jsonMethod.Invoke(typeof(Json), new object[] { result });
-            ServiceData resp = new ServiceData(req.service, (string)jsonobj);
+            ServiceData resp = new ServiceData(req.service, result);
             Message nmsg = new Message();
             nmsg.timestamp = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000;
             nmsg.nonce = msg.nonce;

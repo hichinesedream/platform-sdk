@@ -21,7 +21,7 @@ namespace touzhijia.entity
             // 索引名字
             public String name { get; set; }
             // 索引查询
-            public String[] vals { get; set; }
+            public List<String> vals { get; set; }
 
         }
 

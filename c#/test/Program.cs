@@ -13,6 +13,8 @@ namespace test
     class Program
     {
         [DataContract]
+        [Serializable]
+        [KnownType(typeof(userinfo))]
         class userinfo
         {
             [DataMember]
@@ -27,6 +29,9 @@ namespace test
             public bankCard bankCard { get; set; }
         }
         [DataContract]
+        [Serializable]
+        [KnownType(typeof(idCard))]
+
         class idCard
         {
             [DataMember]
@@ -36,6 +41,8 @@ namespace test
 
         }
         [DataContract]
+        [Serializable]
+        [KnownType(typeof(bankCard))]
         class bankCard
         {
             [DataMember]
@@ -69,7 +76,7 @@ namespace test
             user.bankCard = bankcard;
             var sd = new ServiceData();
             sd.service = "createUser";
-            sd.body = Json.Encode<userinfo>(user);
+            sd.body = user;//Json.Encode<userinfo>(user);
             var msg = new Message();
             msg.timestamp = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000;
             msg.nonce = nonce;

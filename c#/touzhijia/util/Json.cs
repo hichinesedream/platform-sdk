@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -12,30 +12,33 @@ namespace touzhijia.util
     {
         public static string Encode<Type>(Type t)
         {
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Type));
-            MemoryStream stream = new MemoryStream();
-            serializer.WriteObject(stream, t);
-            byte[] data = new byte[stream.Length];
-            stream.Position = 0;
-            stream.Read(data, 0, (int)stream.Length);
-            var jsonstring = Encoding.UTF8.GetString(data);
-            //替换Json的Date字符串
-            string p = @"\\/Date\((\d+)\+\d+\)\\/";
-            MatchEvaluator matchEvaluator = new MatchEvaluator(ConvertJsonDateToDateString);
-            Regex reg = new Regex(p);
-            jsonstring = reg.Replace(jsonstring, matchEvaluator);
-            return jsonstring;
+            return JsonConvert.SerializeObject(t);
+            //DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Type));
+            //MemoryStream stream = new MemoryStream();
+            //serializer.WriteObject(stream, t);
+            //byte[] data = new byte[stream.Length];
+            //stream.Position = 0;
+            //stream.Read(data, 0, (int)stream.Length);
+            //var jsonstring = Encoding.UTF8.GetString(data);
+            ////替换Json的Date字符串
+            //string p = @"\\/Date\((\d+)\+\d+\)\\/";
+            //MatchEvaluator matchEvaluator = new MatchEvaluator(ConvertJsonDateToDateString);
+            //Regex reg = new Regex(p);
+            //jsonstring = reg.Replace(jsonstring, matchEvaluator);
+            //return jsonstring;
         }
-        public static Type Decode<Type>(String data)
+        public static Type Decode<Type>(string data)
         {
-            //将"yyyy-MM-dd HH:mm:ss"格式的字符串转为"\/Date(1294499956278+0800)\/"格式
-            string p = @"\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}";
-            MatchEvaluator matchEvaluator = new MatchEvaluator(ConvertDateStringToJsonDate);
-            Regex reg = new Regex(p);
-            data = reg.Replace(data, matchEvaluator);
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Type));
-            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(data));
-            return (Type)serializer.ReadObject(stream);
+            return JsonConvert.DeserializeObject<Type>(data);
+
+            ////将"yyyy-MM-dd HH:mm:ss"格式的字符串转为"\/Date(1294499956278+0800)\/"格式
+            //string p = @"\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}";
+            //MatchEvaluator matchEvaluator = new MatchEvaluator(ConvertDateStringToJsonDate);
+            //Regex reg = new Regex(p);
+            //data = reg.Replace(data, matchEvaluator);
+            //DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Type));
+            //MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(data));
+            //return (Type)serializer.ReadObject(stream);
         }
 
         /// <summary>

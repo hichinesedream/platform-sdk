@@ -16,6 +16,6 @@ namespace touzhijia.entity
         public float income;
         public DateTime investAt;
         public DateTime repayAt;
-        public String[] tags;
+        public List<String> tags;
     }
 }

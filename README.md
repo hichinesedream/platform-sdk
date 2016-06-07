@@ -192,7 +192,7 @@ Signature | 签名
   "usernamep": "string, required, 平台用户名",
   "registerAt": "datetime, required, 平台注册时间",
   "bindAt": "datetime, required, 绑定投之家时间",
-  "bindType": "enum, 0:表示投之家带来的新用户，1:表示平台已有用户",
+  "bindType": "enum, 0:表示投之家带来的新用户",
   "tags": "array, 标签"
 }
 ```
@@ -512,7 +512,7 @@ status | 说明
 		"bid": "string，标的ID",
 		"username": "string, 合作平台用户名",
 		"amount": "float, 回款金额(本金)",
-		"income": "float, 回款收益，可为负数",
+		"income": "float, 回款收益(不包含管理费)",
 		"repayAt": "datetime, 回款时间",
 		"type": "enum，回款类型，见回款类型表格",
 		"tags": "array, 标签"
