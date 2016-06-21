@@ -18,15 +18,15 @@ namespace touzhijia.service
         Redirect login(LoginReq req);
 
         // 查询用户信息
-        UserInfo[] queryUser(QueryReq req);
+        IList<UserInfo> queryUser(QueryReq req);
 
         // 查询标的信息
-        BidInfo[] queryBids(QueryReq req);
+        IList<BidInfo> queryBids(QueryReq req);
 
         // 查询投资记录
-        InvestInfo[] queryInvests(QueryReq req);
+        IList<InvestInfo> queryInvests(QueryReq req);
 
         // 查询回款记录
-        RepayInfo[] queryRepays(QueryReq req);
+        IList<RepayInfo> queryRepays(QueryReq req);
     }
 }

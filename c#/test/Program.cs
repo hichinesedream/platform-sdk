@@ -78,12 +78,16 @@ namespace test
             sd.service = "createUser";
             sd.body = user;//Json.Encode<userinfo>(user);
             var msg = new Message();
-            msg.timestamp = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000;
+            msg.timestamp = 1466127388;//(DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000;
             msg.nonce = nonce;
             var mcrypt = new MessageCrypt(token, encodingAESKey, platID);
             mcrypt.EncryptMsg(sd, ref msg);
             Message nmsg = platform.Command(msg, null);
-            Console.WriteLine("msg: {0}", Json.Encode<Message>(nmsg));
+            var result = Json.Encode<Message>(nmsg);
+
+            Console.WriteLine("msg: {0}", result);
+
+
             Console.WriteLine("Enter 请继续");
             Console.ReadLine();
         }

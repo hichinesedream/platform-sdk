@@ -31,10 +31,10 @@ namespace touzhijia
 
         public Message Command(Message msg, HttpResponse response)
         {
-            if ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000 - msg.timestamp > expire)
-            {
-                throw new PlatformException(100, "时间戳过期");
-            }
+            //if ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000 - msg.timestamp > expire)
+            //{
+            //    throw new PlatformException(100, "时间戳过期");
+            //}
             ServiceData req = new ServiceData();
             var res = messageCrypt.DecryptMsg(msg, ref req);
             if (res != 0)
@@ -85,7 +85,7 @@ namespace touzhijia
             object jsonobj = jsonMethod.Invoke(typeof(Json), new object[] { result });
             ServiceData resp = new ServiceData(req.service, result);
             Message nmsg = new Message();
-            nmsg.timestamp = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000;
+            nmsg.timestamp = 1466127388;//(DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000;
             nmsg.nonce = msg.nonce;
             res = messageCrypt.EncryptMsg(resp, ref nmsg);
             if (res != 0)

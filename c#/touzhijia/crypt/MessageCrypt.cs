@@ -108,9 +108,8 @@ namespace touzhijia
         //GET RequestKey
         private static byte[] GetRequestKey(string aes_key, string timestamp)
         {
-
             //获取要加密的字段，并转化为Byte[]数组  
-            byte[] data = System.Text.Encoding.UTF8.GetBytes((aes_key + timestamp).ToCharArray());
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(string.Format("{0}{1}",aes_key,timestamp).ToCharArray());
             //建立加密服务  
             System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
             //加密Byte[]数组  

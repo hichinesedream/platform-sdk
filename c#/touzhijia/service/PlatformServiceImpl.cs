@@ -30,22 +30,31 @@ namespace touzhijia.service
             return null;
         }
 
-        BidInfo[] PlatformService.queryBids(QueryReq req)
+        IList<BidInfo> PlatformService.queryBids(QueryReq req)
+        {
+            //依据req 去查询数据库
+            IList<BidInfo> list = new List<BidInfo>();
+            BidInfo info = new BidInfo();
+            info.title = "test_bid1";
+            info.id = "12345";
+            info.originalRate = 12;
+            info.rewardRate = 1;
+            info.desc = "test_bid2";
+            list.Add(info);
+            return list;
+        }
+
+        IList<InvestInfo> PlatformService.queryInvests(QueryReq req)
         {
             return null;
         }
 
-        InvestInfo[] PlatformService.queryInvests(QueryReq req)
+        IList<RepayInfo> PlatformService.queryRepays(QueryReq req)
         {
             return null;
         }
 
-        RepayInfo[] PlatformService.queryRepays(QueryReq req)
-        {
-            return null;
-        }
-
-        UserInfo[] PlatformService.queryUser(QueryReq req)
+        IList<UserInfo> PlatformService.queryUser(QueryReq req)
         {
             return null;
         }
