@@ -180,7 +180,8 @@ Signature | 签名
 	  "number": "string, 卡号",
 	  "bank": "string, 银行名称",
 	  "branch": "string, 支行名"
-  }
+  },
+  "tags": "array, 标签 (wap,pc)"
 }
 ```
 
@@ -231,7 +232,8 @@ code | message
 	  "number": "string, 卡号",
 	  "bank": "string, 银行名称",
 	  "branch": "string, 支行名"
-  }
+  },
+  "tags": "array, 标签 (wap,pc)"
 }
 ```
 

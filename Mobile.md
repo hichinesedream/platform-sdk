@@ -32,7 +32,8 @@
 	  "number": "string, 卡号",
 	  "bank": "string, 银行名称",
 	  "branch": "string, 支行名"
-  }
+  },
+  "tags": "array, 标签 (wap,pc)"
 }
 ```
 
@@ -71,7 +72,7 @@ API 回调地址 http://open.api.touzhijia.cn/callback ,该方式不需要跳转
 	"nonce":"uB8vhipnBDhjGCim",
 	"signature":"c41f07b1bb3f650bd60e447c69a1a32e5bb85108",
 	"timestamp":1467277811,
-	"appId":"xxxx"`
+	"appId":"xxxx"
 }
 ```
 
