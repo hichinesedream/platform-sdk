@@ -42,6 +42,7 @@
 用户授权绑定成功后平台需同步回调投之家的接口URL.
 
 	 线上地址：http://open.api.touzhijia.cn/callback
+	 线上移动端地址：http://t.m.touzhijia.com/api/callback
 	 测试地址：http://test.touzhijia.com:3333/callback
 
 此时请求的URL 所需参数为：
@@ -55,15 +56,26 @@
   "registerAt": "datetime, required, 平台注册时间",
   "bindAt": "datetime, required, 绑定投之家时间",
   "bindType": "enum, 1:表示平台已有用户",
-  "type":  "登录类型，0:PC，1:WAP"
+  "type":  "登录类型，0:PC，1:WAP",
   "tags": "array, 标签"
 }
 ```
 
-请求回调的Method 为 `POST` 参数为
+
+请求回调目前支持API回调和隐藏表单POST回调。
+API 回调地址 http://open.api.touzhijia.cn/callback ,该方式不需要跳转，回调成功后，合作平台方可以自由跳转
+此时请求回调的Method 为 `POST` 参数为
+```json
+{
+	"data" : "fHyCtB9e9fOHWEaJL6zGyiY7xjMRhxQRskwT3kMVCJZgjrZQJ5Pnn/Sryw2+TT/rCDzt6R9b1w9Z1n6u3lpJ/g==,
+	"nonce":"uB8vhipnBDhjGCim",
+	"signature":"c41f07b1bb3f650bd60e447c69a1a32e5bb85108",
+	"timestamp":1467277811,
+	"appId":"xxxx"`
+}
+```
+
+隐藏表单回调地址 http://t.m.touzhijia.com/api/callback,该方式会跳转到投之家的移动端页面。
+此时请求回调的Method 为 `POST` 参数为
 `data=xxx&nonce=xxx&signature=xxx&timestamp=12345643&appId=xxxx`
 
-
-### Response
-
-投之家会输出提示用户绑定成功的页面
