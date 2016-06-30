@@ -67,7 +67,7 @@ API 回调地址 http://open.api.touzhijia.cn/callback ,该方式不需要跳转
 此时请求回调的Method 为 `POST` 参数为
 ```json
 {
-	"data" : "fHyCtB9e9fOHWEaJL6zGyiY7xjMRhxQRskwT3kMVCJZgjrZQJ5Pnn/Sryw2+TT/rCDzt6R9b1w9Z1n6u3lpJ/g==,
+	"data" : "fHyCtB9e9fOHWEaJL6zGyiY7xjMRhxQRskwT3kMVCJZgjrZQJ5Pnn/Sryw2+TT/rCDzt6R9b1w9Z1n6u3lpJ/g==",
 	"nonce":"uB8vhipnBDhjGCim",
 	"signature":"c41f07b1bb3f650bd60e447c69a1a32e5bb85108",
 	"timestamp":1467277811,
