@@ -171,7 +171,7 @@ Signature | 签名
 {
   "username": "string, 投之家用户名",
   "telephone": "string, 手机",
-  "email": "string, 电子邮箱",
+  "email": "string, 电子邮箱(可选)",
   "idCard": {
     "number": "string, 身份证号码",
     "name": "string, 实名"
@@ -223,7 +223,7 @@ code | message
 {
   "username": "string, 投之家用户名",
   "telephone": "string, 手机",
-  "email": "string, 电子邮箱",
+  "email": "string, 电子邮箱(可选)",
   "idCard": {
     "number": "string, 身份证号码",
     "name": "string, 实名"

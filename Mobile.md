@@ -6,7 +6,7 @@
 
 其中createUser和login接口可以复用原来的接口URL，login接口依据type字段来区分用户SSO登陆到PC还是WAP端。bindUser 接口需要提供一个针对移动端适配的接口URL，数据传输协议不变。
 
-
+createUser 和 bindUser 在移动端邮箱为非必传项。所以出现邮箱为空的情况，不要报异常。
 
 
 # 2. 关联老账户
