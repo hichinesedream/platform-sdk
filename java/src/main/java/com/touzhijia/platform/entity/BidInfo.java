@@ -79,7 +79,7 @@ public class BidInfo {
 	public void setPeriod(String period) {
 		this.period = period;
 	}
-	public Float getProps() {
+	public String getProps() {
 		return props;
 	}
 	public void setProps(String props) {
