@@ -14,6 +14,7 @@ public class BidInfo {
 	private String period;
 	private Float originalRate;
 	private Float rewardRate;
+	private String props;
 	private int status;
 	private int repayment;
 	private int type;
@@ -78,17 +79,23 @@ public class BidInfo {
 	public void setPeriod(String period) {
 		this.period = period;
 	}
+	public Float getProps() {
+		return props;
+	}
+	public void setProps(String props) {
+		this.props = props;
+	}
 	public Float getOriginalRate() {
 		return originalRate;
 	}
 	public void setOriginalRate(Float originalRate) {
 		this.originalRate = originalRate;
 	}
-	public Float getAwardRate() {
-		return awardRate;
+	public Float getRewardRate() {
+		return rewardRate;
 	}
-	public void setAwardRate(Float awardRate) {
-		this.awardRate = awardRate;
+	public void setRewardRate(Float rewardRate) {
+		this.rewardRate = rewardRate;
 	}
 	public int getStatus() {
 		return status;
