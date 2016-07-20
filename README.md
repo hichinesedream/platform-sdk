@@ -395,7 +395,7 @@ code | message
 	  "publishAt": "datetime, 标的起投时间，如果有倒计时，这个时间会晚于标的创建时间",
 	  "closeAt": "datetime, 标的截止购买时间",
 	  "fullAt": "datetime, 标的满标时间",
-	  "repayDate": "date, 预计还款日期",
+	  "repayDate": "date, 预计还款日期(最后一期)",
 	  "tags": "标签，数组，用以扩充标的属性。如：标的活动信息"
 	}
 ]
@@ -464,7 +464,7 @@ status | 说明
 ```json
 [
 	{
-	  "id": "string, 订单ID，全局唯一",
+	  "id": "string, 投资记录ID，全局唯一",
 	  "bid": "string, 标的ID",
 	  "burl": "string, 标的url",
 	  "username": "string, 合作平台用户名",
@@ -476,6 +476,8 @@ status | 说明
 	}
 ]
 ```
+
+tips: 从移动端投资用`wap`标识，Andoird客户端用`android` iOS客户端用`ios`标识，其他用`pc`标识，自动购买用`auto_buy`标识
 
 ## 3.7 回款记录查询
 
@@ -509,7 +511,7 @@ status | 说明
 ```json
 [
 	{
-		"id": "string, 订单ID，全局唯一",
+		"id": "string, 回款ID，全局唯一",
 		"investId": "string，投资ID",
 		"bid": "string，标的ID",
 		"username": "string, 合作平台用户名",
