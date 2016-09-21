@@ -577,7 +577,8 @@ type | 说明
   }
 }
 ```
-
+请求的Method 为 `POST` 参数为
+`data=xxx&nonce=xxx&signature=xxx&timestamp=12345643&appId=xxxx`
 
 # 4. 异常
 
