@@ -531,6 +531,54 @@ type | 说明
 0 | 普通回款，因标的正常到期收到回款
 1 | 转让回款，因用户主动债权转让收到回款
 
+
+
+## 3.8 投之家用户信息查询
+
+投之家通过该接口获取到跟投之家绑定的用户信息
+
+### Service
+
+`service=queryTzjUser`
+
+### Request
+
+```json
+{
+	"timeRange": {
+		"startTime": "开始时间",
+		"endTime": "结束时间"
+	},
+	"index": {
+		"name": "这里只会根据平台用户名查询，固定为usernamep",
+		"vals": "username数组，查询匹配的用户信息"
+	}
+}
+```
+
+可以根据时间的范围查询（timeRange）这个时间范围内完成绑定的所有用户信息，也可以根据索引查询（index）指定用户名的用户信息
+查询投之家用户信息接口地址：http://open.api.touzhijia.cn/querytzjuser
+
+### Response
+
+```json
+{
+  "username": "string, 投之家用户名",
+  "telephone": "string, 手机",
+  "email": "string, 电子邮箱",
+  "idCard": {
+    "number": "string, 身份证号码",
+    "name": "string, 实名"
+  },
+  "bankCard": {
+	  "number": "string, 卡号",
+	  "bank": "string, 银行名称",
+	  "branch": "string, 支行名"
+  }
+}
+```
+
+
 # 4. 异常
 
 下表为每个接口公用的一些异常
