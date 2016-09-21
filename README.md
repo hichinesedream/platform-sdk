@@ -558,6 +558,8 @@ type | 说明
 
 可以根据时间的范围查询（timeRange）这个时间范围内完成绑定的所有用户信息，也可以根据索引查询（index）指定用户名的用户信息
 查询投之家用户信息接口地址：http://open.api.touzhijia.cn/querytzjuser
+请求的Method 为 `POST` 参数为
+`data=xxx&nonce=xxx&signature=xxx&timestamp=12345643&appId=xxxx`
 
 ### Response
 
@@ -577,8 +579,7 @@ type | 说明
   }
 }
 ```
-请求的Method 为 `POST` 参数为
-`data=xxx&nonce=xxx&signature=xxx&timestamp=12345643&appId=xxxx`
+
 
 # 4. 异常
 
