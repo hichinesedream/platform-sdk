@@ -535,7 +535,7 @@ type | 说明
 
 ## 3.8 投之家用户信息查询
 
-投之家通过该接口获取到跟投之家绑定的用户信息
+平台通过该接口获取到跟投之家绑定的用户信息
 
 ### Service
 
@@ -556,7 +556,7 @@ type | 说明
 }
 ```
 
-可以根据时间的范围查询（timeRange）这个时间范围内完成绑定的所有用户信息，也可以根据索引查询（index）指定用户名的用户信息
+可以根据时间的范围查询（timeRange）这个时间范围内完成绑定的所有用户信息，也可以根据索引查询（index）指定平台用户名在投之家的用户信息
 查询投之家用户信息接口地址：http://open.api.touzhijia.cn/query
 请求的Method 为 `POST` 参数为
 `data=xxx&nonce=xxx&signature=xxx&timestamp=12345643&appId=xxxx`
