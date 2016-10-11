@@ -179,9 +179,9 @@ Signature | 签名
   "bankCard": {
 	  "number": "string, 卡号",
 	  "bank": "string, 银行名称",
-	  "branch": "string, 支行名"，
-	  "province": "string, 省份"，
-	  "city": "string, 城市"，
+	  "branch": "string, 支行名",
+	  "province": "string, 省份",
+	  "city": "string, 城市",
   },
   "tags": "array, 标签 (wap,pc)"
 }
@@ -233,9 +233,9 @@ code | message
   "bankCard": {
 	  "number": "string, 卡号",
 	  "bank": "string, 银行名称",
-	  "branch": "string, 支行名"，
-	  "province": "string, 省份"，
-	  "city": "string, 城市"，
+	  "branch": "string, 支行名",
+	  "province": "string, 省份",
+	  "city": "string, 城市",
   },
   "tags": "array, 标签 (wap,pc)"
 }
@@ -579,9 +579,9 @@ type | 说明
   "bankCard": {
 	  "number": "string, 卡号",
 	  "bank": "string, 银行名称",
-	  "branch": "string, 支行名"，
-	  "province": "string, 省份"，
-	  "city": "string, 城市"，
+	  "branch": "string, 支行名",
+	  "province": "string, 省份",
+	  "city": "string, 城市",
   }
 }
 ```
