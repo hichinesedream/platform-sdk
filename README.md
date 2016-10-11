@@ -181,7 +181,7 @@ Signature | 签名
 	  "bank": "string, 银行名称",
 	  "branch": "string, 支行名"，
 	  "province": "string, 省份"，
-	  "city": "string, 城市"
+	  "city": "string, 城市"，
   },
   "tags": "array, 标签 (wap,pc)"
 }
@@ -235,7 +235,7 @@ code | message
 	  "bank": "string, 银行名称",
 	  "branch": "string, 支行名"，
 	  "province": "string, 省份"，
-	  "city": "string, 城市"
+	  "city": "string, 城市"，
   },
   "tags": "array, 标签 (wap,pc)"
 }
@@ -581,7 +581,7 @@ type | 说明
 	  "bank": "string, 银行名称",
 	  "branch": "string, 支行名"，
 	  "province": "string, 省份"，
-	  "city": "string, 城市"
+	  "city": "string, 城市"，
   }
 }
 ```
