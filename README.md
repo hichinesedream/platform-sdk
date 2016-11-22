@@ -343,9 +343,9 @@ code | message
 	  "coupons": [
 		 {
 		 "name": "string, 券名",
-		 "amount": "int, optional, 券的金额",
+		 "amount": "float, optional, 券的金额",
 		 "rate": "float, optional, 券的利率",
-		 "type": "int, optional, 券的类型",
+		 "type": "enum, optional, 券的类型",
 		 "desc": "string, optional, 券的详情"
 		 },
 	  ],
