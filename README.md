@@ -341,9 +341,9 @@ code | message
 		  "totalAmount": "float, optional, 资产总额"
 	  },
 	  "coupons": {
-		  "cashCoupons": "int，现金券数量",
-		  "rateCoupons": "int, optional, 加息券数量",
-		  "luckyMoney": "int, optional, 红包数量"
+		  {"name": "string, 券的名字", "num": "int, 券的数量"}
+		  {"name": "string, 券的名字", "num": "int, 券的数量"}
+		  ......
 	  },
 	  "tags": "array, 标签"
 	}
