@@ -341,10 +341,9 @@ code | message
 		  "totalAmount": "float, optional, 资产总额"
 	  },
 	  "coupons": {
-		 {
-		 "name": "string, 券的名字",
-		 "num": "int, optional, 券的数量"
-		 }
+		 {"name": "string, 券的名字","num": "int, optional, 券的数量"},
+		 {"name": "string, 券的名字","num": "int, optional, 券的数量"},
+		 ......
 	  },
 	  "tags": "array, 标签"
 	}
