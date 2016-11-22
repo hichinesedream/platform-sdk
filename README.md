@@ -340,11 +340,11 @@ code | message
 		  "balanceAmount": "float, optional, 账户余额",
 		  "totalAmount": "float, optional, 资产总额"
 	  },
-	  "coupons": {
+	  "coupons": [
 		 {"name": "string, 券的名字","num": "int, optional, 券的数量"},
 		 {"name": "string, 券的名字","num": "int, optional, 券的数量"},
-		 ......
-	  },
+		 {"name": "string, 券的名字","num": "int, optional, 券的数量"},
+	  ],
 	  "tags": "array, 标签"
 	}
 ]
