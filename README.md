@@ -341,15 +341,26 @@ code | message
 		  "totalAmount": "float, optional, 资产总额"
 	  },
 	  "coupons": [
-		 {"name": "string, 券的名字","num": "int, optional, 券的数量"},
-		 {"name": "string, 券的名字","num": "int, optional, 券的数量"},
-		 {"name": "string, 券的名字","num": "int, optional, 券的数量"},
+		 {
+		 "name": "string, 券名",
+		 "amount": "int, optional, 券的金额",
+		 "rate": "float, optional, 券的利率",
+		 "type": "int, optional, 券的类型",
+		 "desc": "string, optional, 券的详情"
+		 },
 	  ],
 	  "tags": "array, 标签"
 	}
 ]
 ```
+#### 券的类型
 
+type | 说明
+--- | ---
+0 | 现金券
+1 | 加息券
+2 | 红包
+9 | 其他
 
 ## 3.5 标的信息查询
 
