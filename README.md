@@ -340,6 +340,11 @@ code | message
 		  "balanceAmount": "float, optional, 账户余额",
 		  "totalAmount": "float, optional, 资产总额"
 	  },
+	  "coupons": {
+		  "cashCoupons": "int，现金券数量",
+		  "rateCoupons": "int, optional, 加息券数量",
+		  "redPackets": "int, optional, 红包数量"
+	  },  
 	  "tags": "array, 标签"
 	}
 ]
