@@ -336,14 +336,15 @@ code | message
 	  "bindAt": "datetime, required, 绑定投之家时间",
 	  "bindType": "enum, 0:表示投之家带来的新用户，1:表示平台已有用户",
 	  "assets": {
-		  "awaitAmount": "float，待收金额",
+		  "awaitAmount": "float, 待收金额",
 		  "balanceAmount": "float, optional, 账户余额",
 		  "totalAmount": "float, optional, 资产总额"
 	  },
 	  "coupons": {
-		  {"name": "string, 券的名字", "num": "int, 券的数量"}
-		  {"name": "string, 券的名字", "num": "int, 券的数量"}
-		  ......
+		 {
+		 "name": "string, 券的名字",
+		 "num": "int, optional, 券的数量"
+		 }
 	  },
 	  "tags": "array, 标签"
 	}
