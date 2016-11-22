@@ -344,7 +344,7 @@ code | message
 		  "cashCoupons": "int，现金券数量",
 		  "rateCoupons": "int, optional, 加息券数量",
 		  "redPackets": "int, optional, 红包数量"
-	  },  
+	  },
 	  "tags": "array, 标签"
 	}
 ]
