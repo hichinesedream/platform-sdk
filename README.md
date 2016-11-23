@@ -348,7 +348,7 @@ code | message
 		 "rate": "float, 券的利率",
 		 "type": "enum, 券的类型",
 		 "desc": "string, 券的详情",
-		 "status": "enum, 券的状态 0:可使用,1:已过期"
+		 "status": "enum, 券的状态 0:可使用, 1:已过期, 2:已使用"
 		 },
 	  ],
 	  "tags": "array, 标签"
