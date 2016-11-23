@@ -342,11 +342,13 @@ code | message
 	  },
 	  "coupons": [
 		 {
+		 "id": "string, 券唯一标识",
 		 "name": "string, 券名",
-		 "amount": "float, optional, 券的金额",
-		 "rate": "float, optional, 券的利率",
-		 "type": "enum, optional, 券的类型",
-		 "desc": "string, optional, 券的详情"
+		 "amount": "float, 券的金额",
+		 "rate": "float, 券的利率",
+		 "type": "enum, 券的类型",
+		 "desc": "string, 券的详情",
+		 "status": "enum, 券的状态 0:可使用,1:已过期"
 		 },
 	  ],
 	  "tags": "array, 标签"
