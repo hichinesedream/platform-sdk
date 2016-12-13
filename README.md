@@ -78,6 +78,7 @@ signature | string | Yes | 对data的签名，如果data为空，该字段也为
   "message": "错误描述"
 }
 ```
+注意：错误响应内容无需加密
 
 ### 其他说明
 
