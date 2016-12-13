@@ -494,6 +494,7 @@ status | 说明
 	  "actualAmount": "float, 实际投资金额",
 	  "income": "float, 预期投资收益",
 	  "investAt": "datetime, 投资时间",
+	  "status": "enum, 投资状态(0:还款中, 1:已还清)",
 	  "tags": "array, 标签"
 	}
 ]
