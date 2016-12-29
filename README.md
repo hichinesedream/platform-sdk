@@ -210,6 +210,7 @@ code | message
 1001 | 手机号已占用
 1002 | 邮箱已占用
 1003 | 身份证已占用
+1004 | 用户名已占用
 
 
 ## 3.2 关联老账户
@@ -632,3 +633,4 @@ type| name | 说明
 1001 | TELEPHONE_HAVE_USED     | 手机号已占用
 1002 | EMAIL_HAVE_USED 		   | 邮箱号已占用
 1003 | IDCARD_HAVE_USED 	   | 身份证号已占用
+1004 | USERNAME_HAVE_USED 	   | 用户名已占用
