@@ -339,6 +339,7 @@ code | message
 	  "bindType": "enum, 0:表示投之家带来的新用户，1:表示平台已有用户",
 	  "assets": {
 		  "awaitAmount": "float, 待收金额",
+		  "currentAmount": "float, 活期金额",
 		  "balanceAmount": "float, optional, 账户余额",
 		  "totalAmount": "float, optional, 资产总额"
 	  },
