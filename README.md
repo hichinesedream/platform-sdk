@@ -340,6 +340,7 @@ code | message
 	  "assets": {
 		  "awaitAmount": "float, 待收金额",
 		  "currentAmount": "float, 活期金额",
+		  "frozenAmount": "float, 冻结金额",
 		  "balanceAmount": "float, optional, 账户余额",
 		  "totalAmount": "float, optional, 资产总额"
 	  },
