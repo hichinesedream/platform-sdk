@@ -196,7 +196,7 @@ Signature | 签名
   "usernamep": "string, required, 平台用户名",
   "registerAt": "datetime, required, 平台注册时间",
   "bindAt": "datetime, required, 绑定投之家时间",
-  "bindType": "enum, 0:表示投之家带来的新用户",
+  "bindType": "enum, required, 0:表示投之家带来的新用户",
   "tags": "array, 标签"
 }
 ```
@@ -261,7 +261,7 @@ code | message
   "usernamep": "string, required, 平台用户名",
   "registerAt": "datetime, required, 平台注册时间",
   "bindAt": "datetime, required, 绑定投之家时间",
-  "bindType": "enum, 1:表示平台已有用户",
+  "bindType": "enum, required, 1:表示平台已有用户",
   "tags": "array, 标签"
 }
 ```
@@ -422,6 +422,7 @@ type | 说明
 	  "closeAt": "datetime, 标的截止购买时间",
 	  "fullAt": "datetime, 标的满标时间",
 	  "repayDate": "date, 预计还款日期(最后一期)",
+	  "device": "enum, 0:pc/wap展示, 1:pc展示, 2:wap展示",
 	  "tags": "标签，数组，用以扩充标的属性。如：标的活动信息"
 	}
 ]
