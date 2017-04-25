@@ -291,6 +291,7 @@ code | message
 {
   "username": "string, 投之家用户名",
   "usernamep": "string, 合作平台用户名",
+  "securityCode": "string, 该账户的随机8位长度字段",
   "bid": "string, 标的ID，跳转到标的购买页，home为首页，account为个人中心",
   "type": "登录类型，0:PC，1:WAP"
 }
