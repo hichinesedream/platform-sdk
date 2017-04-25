@@ -197,6 +197,7 @@ Signature | 签名
   "registerAt": "datetime, required, 平台注册时间",
   "bindAt": "datetime, required, 绑定投之家时间",
   "bindType": "enum, required, 0:表示投之家带来的新用户",
+  "securityCode": "string, 该账户的随机8位长度字段",
   "tags": "array, 标签"
 }
 ```
@@ -262,6 +263,7 @@ code | message
   "registerAt": "datetime, required, 平台注册时间",
   "bindAt": "datetime, required, 绑定投之家时间",
   "bindType": "enum, required, 1:表示平台已有用户",
+  "securityCode": "string, 该账户的随机8位长度字段",
   "tags": "array, 标签"
 }
 ```
@@ -321,6 +323,7 @@ code | message
 	},
 	"index": {
 		"name": "这里只会根据投之家用户名查询，固定为username",
+		"securityCode": "string, 该账户的随机8位长度字段",
 		"vals": "username数组，查询匹配的用户信息"
 	}
 }
@@ -475,6 +478,7 @@ status | 说明
 	},
 	"index": {
 		"name": "id OR bid OR username",
+		"securityCode": "string, 该账户的随机8位长度字段（以username查询时才有该字段）",
 		"vals": "array，见下面的说明"
 	}
 }
@@ -523,6 +527,7 @@ tips: 从移动端投资用`wap`标识，Andoird客户端用`android` iOS客户�
 	},
 	"index": {
 		"name": "id OR bid OR username",
+		"securityCode": "string, 该账户的随机8位长度字段（以username查询时才有该字段）",
 		"vals": "array，见下面的说明"
 	}
 }
