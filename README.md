@@ -265,7 +265,7 @@ code | message
   "registerAt": "datetime, required, 平台注册时间",
   "bindAt": "datetime, required, 绑定投之家时间",
   "bindType": "enum, required, 1:表示平台已有用户",
-  "securityCode": "string, 用于鉴权校验,该账户的8位长度密钥",
+  "securityCode": "string, 用于鉴权校验,该账户的8位长度密钥",
   "tags": "array, 标签"
 }
 ```
