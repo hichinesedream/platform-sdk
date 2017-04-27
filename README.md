@@ -428,7 +428,7 @@ type | 说明
 	  "closeAt": "datetime, 标的截止购买时间",
 	  "fullAt": "datetime, 标的满标时间",
 	  "repayDate": "date, 预计还款日期(最后一期)",
-	  "device": "enum, 0:pc/wap展示, 1:pc展示, 2:wap展示",
+	  "device": "enum, 0:pc/wap展示, 1:pc展示, 2:wap展示(非必传项)",
 	  "tags": "标签，数组，用以扩充标的属性。如：标的活动信息"
 	}
 ]
@@ -506,7 +506,7 @@ status | 说明
 	  "actualAmount": "float, 实际投资金额",
 	  "income": "float, 预期投资收益",
 	  "investAt": "datetime, 投资时间",
-	  "status": "enum, 投资状态(0:还款中, 1:已还清)",
+	  "status": "enum, 投资状态(0:还款中, 1:已还清)(非必传项)",
 	  "tags": "array, 标签"
 	}
 ]
