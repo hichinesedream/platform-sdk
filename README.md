@@ -429,7 +429,7 @@ type | 说明
 	  "closeAt": "datetime, 标的截止购买时间",
 	  "fullAt": "datetime, 标的满标时间",
 	  "repayDate": "date, 预计还款日期(最后一期)",
-	  "device": "enum, 0:pc/wap展示, 1:pc展示, 2:wap展示(非必传项,默认为0)",
+	  "device": "enum, 0:pc/wap展示, 1:pc展示, 2:wap展示(非必传项,默认为0)",
 	  "tags": "标签，数组，用以扩充标的属性。如：标的活动信息"
 	}
 ]
