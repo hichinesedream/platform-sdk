@@ -340,6 +340,7 @@ code | message
 	{
 	  "username": "string, required, 投之家用户名",
 	  "usernamep": "string, required, 平台用户名",
+	  "salt": "string, 用于鉴权校验,该账户的8位长度密钥",
 	  "registerAt": "datetime, required, 平台注册时间",
 	  "bindAt": "datetime, required, 绑定投之家时间",
 	  "bindType": "enum, 0:表示投之家带来的新用户，1:表示平台已有用户",
