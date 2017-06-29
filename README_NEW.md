@@ -505,7 +505,6 @@ status | 说明
 	  "income": "float, 预期投资收益",
 	  "period": "string, 投资期限, 1d, 1m",
 	  "interestAt": "datetime, 起息时间",
-	  "investType": "enum, 投资类型",
 	  "investRate": "float, 投资利率",
 	  "status": "enum, 投资状态(0:还款中, 1:已还清)",
 	  "tags": "array, 标签"
