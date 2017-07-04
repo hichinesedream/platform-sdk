@@ -506,6 +506,7 @@ status | 说明
 	  "period": "string, 投资期限, 1d, 1m",
 	  "interestAt": "datetime, 起息时间",
 	  "investRate": "float, 投资利率",
+	  "investType": "enum, 投资类型（0:资产包, 1:散标债权）",
 	  "status": "enum, 投资状态(0:还款中, 1:已还清)",
 	  "tags": "array, 标签"
 	}
@@ -529,7 +530,7 @@ tips: 从移动端投资用`wap`标识，Andoird客户端用`android` iOS客户�
 		"endTime": "结束时间"
 	},
 	"index": {
-		"name": "investId OR username",
+		"name": "investId OR bid OR username",
 		"vals": "array，见下面的说明"
 	}
 }
@@ -546,6 +547,7 @@ tips: 从移动端投资用`wap`标识，Andoird客户端用`android` iOS客户�
 [
 	{
 		"investId": "string，投资ID",
+		"bid": "string，标的ID",
 		"username": "string, 投之家用户名",
 		"usernamep": "string, 合作平台用户名",
 		"repayPlan": "array, 回款计划明细"
