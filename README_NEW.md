@@ -539,6 +539,7 @@ tips: 从移动端投资用`wap`标识，Andoird客户端用`android` iOS客户�
 可以根据时间的范围查询（timeRange）这个时间范围内投资的所有回款计划，也可以根据索引进行如下查询
 
 - investId查询（field="investId"），查询指定投资ID的回款计划
+- bid查询（field="bid"），查询指定标的ID所有投资对应的回款计划
 - username（field="username"），查询指定用户的回款计划
 
 ### Response
