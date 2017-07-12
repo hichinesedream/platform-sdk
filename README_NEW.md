@@ -506,6 +506,7 @@ status | 说明
 	  "username": "string, 投之家用户名",
 	  "usernamep": "string, 合作平台用户名",
 	  "amount": "float, 投资金额",
+	  "investAt": "datetime, 投资时间",
 	  "actualAmount": "float, 实际投资金额",
 	  "income": "float, 预期投资收益",
 	  "period": "string, 实际投资期限, 1d, 1m",
