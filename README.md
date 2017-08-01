@@ -7,7 +7,7 @@
 1 | 3.4 用户信息查询：Response | 新增：<br />"awaitCapital": "float, 待收本金"<br />	"awaitInterest": "float, 待收利息"
 2 | 3.5 标的信息查询：Response | 新增：<br />"minPeriod": "string, 最短借款期限, 1d, 1m"<br />"maxPeriod": "string, 最长借款期限, 1d, 1m"
 3 | 3.5 标的信息查询：标的类型 | 新增：<br />103 资产包（包含多个散标债权）
-4 | 3.6 投资记录查询：Response | 新增：<br />"period": "string, 实际投资期限, 1d, 1m"<br />"interestAt": "datetime, 起息时间"<br />"investRate": "float, 投资利率"
+4 | 3.6 投资记录查询：Response | 新增：<br />"period": "string, 实际投资期限, 1d, 1m"<br />"interestAt": "datetime, 起息时间"<br />"investRate": "float, 投资利率"<br />"investMethod": "enum, 投资方式"
 5 | 3.7 回款记录查询：Response | 新增：<br />"usernamep": "string, 合作平台用户名"<br />"createTime": "string, 回款计划生成时间"<br />"repayPlan": "array, 回款计划明细"<br />"expectAmount": "float, 预期回款本金"<br />"expectIncome": "float, 预期回款利息"<br />"repayDate": "datetime, 实际回款时间"<br />"status": "enum，回款状态，见回款状态表格"<br />删除：<br />"id": "string, 回款ID，全局唯一"
 6 | 3.7 回款记录查询：回款类型 | 新增：<br />2 提前回款，借款人提前还款 
 7 | 3.7 回款记录查询 | 新增：<br />回款状态 
