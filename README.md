@@ -568,7 +568,7 @@ status | 说明
 		"bid": "string，标的ID",
 		"username": "string, 投之家用户名",
 		"usernamep": "string, 合作平台用户名",
-		"createTime": "string, 回款计划生成时间",
+		"createTime": "datetime, 回款计划生成时间",
 		"repayPlan": "array, 回款计划明细"
 		[ 
 			{
