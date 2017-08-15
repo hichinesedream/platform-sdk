@@ -370,7 +370,7 @@ code | message
 		 "id": "string, 券唯一标识",
 		 "name": "string, 券名",
 		 "amount": "float, 券的金额",
-		 "rate": "float, 券的利率",
+		 "rate": "float, 券的利率,1.5表示1.5%",
 		 "type": "enum, 券的类型",
 		 "desc": "string, 券的详情",
 		 "status": "enum, 券的状态 0:可使用, 1:已过期, 2:已使用"
@@ -527,7 +527,7 @@ status | 说明
 	  "income": "float, 预期投资收益",
 	  "period": "string, 实际投资期限, 1d, 1m",
 	  "interestAt": "datetime, 起息时间",
-	  "investRate": "float, 投资利率",
+	  "investRate": "float, 投资利率,10表示10%",
 	  "investMethod": "enum, 投资方式(1:PC, 2:WAP, 4:Android, 8:iOS, 16:用户开启自动购买, 32:系统自动匹配购买（如理财计划类）) ",
 	  "status": "enum, 投资状态(0:还款中, 1:已还清)",
 	  "tags": "array, 标签"
