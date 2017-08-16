@@ -15,6 +15,7 @@
 9 | 3.7 回款记录查询：Response | 新增：<br />全部变更<br />删除：<br />"id": "string, 回款ID，全局唯一"
 10 | 3.7 回款记录查询：回款类型 | 新增：<br />2 提前回款，借款人提前还款  
 11 | 3.8 投之家用户信息查询 | 整体删除
+12 | 注意事项： | 1.float型数据保留2位小数<br />2.利率回传格式：如1.5%，回传1.5即可
 
 # 1. 概述
 
@@ -524,7 +525,7 @@ status | 说明
 	  "amount": "float, 投资金额",
 	  "investAt": "datetime, 投资时间",
 	  "actualAmount": "float, 实际投资金额",
-	  "income": "float, 预期投资收益",
+	  "income": "float, 预期投资收益,包括加息收益",
 	  "period": "string, 实际投资期限, 1d, 1m",
 	  "interestAt": "datetime, 起息时间",
 	  "investRate": "float, 投资利率,10表示10%",
