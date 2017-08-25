@@ -363,8 +363,10 @@ code | message
 		  "awaitInterest": "float, 待收利息",
 		  "currentAmount": "float, 活期金额",
 		  "frozenAmount": "float, 冻结金额",
-		  "balanceAmount": "float, optional, 账户余额",
-		  "totalAmount": "float, optional, 资产总额"
+		  "balanceAmount": "float, 账户余额",
+		  "totalAmount": "float, 资产总额",
+		  "fixedAwaitAmount": "float, 定期在投待收(非必填)",
+		  "unfixedAwaitAmount": "float, 非定期在投待收(非必填)"
 	  },
 	  "coupons": [
 		 {
