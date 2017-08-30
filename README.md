@@ -365,8 +365,8 @@ code | message
 		  "frozenAmount": "float, 冻结金额",
 		  "balanceAmount": "float, 账户余额",
 		  "totalAmount": "float, 资产总额",
-		  "fixedAwaitAmount": "float, 定期在投待收本金(非必填)",
-		  "unfixedAwaitAmount": "float, 非定期在投待收本金(非必填)"
+		  "fixedAwaitAmount": "float, 定期在投待收本金(非必填)",
+		  "unfixedAwaitAmount": "float, 非定期在投待收本金(非必填)"
 	  },
 	  "coupons": [
 		 {
