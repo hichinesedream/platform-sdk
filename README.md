@@ -8,7 +8,7 @@
 2 | 3.1 创建新账户：Errors | 更新：<br />1002 邮箱已占用(目前邮箱不是必传项，可不做验证)
 3 | 3.2 关联老账户：回调Request | 新增：<br />"salt": "string, 用于鉴权校验,该账户的8位长度密钥"
 4 | 3.3 单点登录：Request | 新增：<br />"salt": "string, 用于鉴权校验,该账户的8位长度密钥"
-5 | 3.4 用户信息查询：Response | 新增：<br />"salt": "string, 用于鉴权校验,该账户的8位长度密钥"<br />"awaitCapital": "float, 待收本金"<br />	"awaitInterest": "float, 待收利息"<br />"currentAmount": "float, 活期金额"<br />"frozenAmount": "float, 冻结金额"<br />"coupons"(见详情)
+5 | 3.4 用户信息查询：Response | 新增：<br />"salt": "string, 用于鉴权校验,该账户的8位长度密钥"<br />"awaitCapital": "float, 待收本金"<br />	"awaitInterest": "float, 待收利息"<br />"currentAmount": "float, 活期金额"<br />"frozenAmount": "float, 冻结金额"<br />"coupons", 删除优惠券信息
 6 | 3.5 标的信息查询：Response | 新增：<br />"minPeriod": "string, 最短借款期限, 1d, 1m"<br />"maxPeriod": "string, 最长借款期限, 1d, 1m"<br />"device": "enum, 0:pc/wap展示, 1:pc展示, 2:wap展示(非必传项,默认为0)", 4:pc/wap均不展示
 7 | 3.5 标的信息查询：标的类型 | 新增：<br />103 资产包（包含多个散标债权）
 8 | 3.6 投资记录查询：Response | 新增：<br />"username": "string, 投之家用户名"<br />"usernamep": "string, 合作平台用户名"<br />"period": "string, 实际投资期限, 1d, 1m"<br />"interestAt": "datetime, 起息时间"<br />"investRate": "float, 投资利率"<br />"investMethod": "enum, 投资方式(1:PC, 2:WAP, 4:Android, 8:iOS, 16:用户开启自动购买, 32:系统自动匹配购买（如理财计划类）) "<br />"status": "enum, 投资状态(0:还款中, 1:已还清)"
@@ -368,17 +368,6 @@ code | message
 		  "fixedAwaitAmount": "float, 定期在投待收本金(非必填)",
 		  "unfixedAwaitAmount": "float, 非定期在投待收本金(非必填)"
 	  },
-	  "coupons": [
-		 {
-		 "id": "string, 券唯一标识",
-		 "name": "string, 券名",
-		 "amount": "float, 券的金额",
-		 "rate": "float, 券的利率,1.5表示1.5%",
-		 "type": "enum, 券的类型",
-		 "desc": "string, 券的详情",
-		 "status": "enum, 券的状态 0:可使用, 1:已过期, 2:已使用"
-		 },
-	  ],
 	  "tags": "array, 标签"
 	}
 ]
