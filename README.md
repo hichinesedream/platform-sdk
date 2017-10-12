@@ -286,10 +286,6 @@ code | message
 }
 ```
 
-请求回调的Method 为 `POST` 参数为
-`data=xxx&nonce=xxx&signature=xxx&timestamp=12345643&appId=xxxx`
-
-
 ### Response
 
 投之家会输出提示用户绑定成功的页面
