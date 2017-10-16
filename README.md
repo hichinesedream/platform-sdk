@@ -11,7 +11,7 @@
 5 | 3.4 用户信息查询：Response | 新增：<br />"salt": "string, 用于鉴权校验,该账户的8位长度密钥"<br />"awaitCapital": "float, 待收本金"<br />	"awaitInterest": "float, 待收利息"<br />"currentAmount": "float, 活期金额"<br />"frozenAmount": "float, 冻结金额"<br />"fixedAwaitAmount": "float, 定期在投待收本金(非必填)"<br />"unfixedAwaitAmount": "float, 非定期在投待收本金(非必填)"
 6 | 3.5 标的信息查询：Response | 新增：<br />"minPeriod": "string, 最短借款期限, 1d, 1m"<br />"maxPeriod": "string, 最长借款期限, 1d, 1m"<br />"device": "enum, 0:pc/wap展示, 1:pc展示, 2:wap展示(非必传项,默认为0)", 4:pc/wap均不展示
 7 | 3.5 标的信息查询：标的类型 | 新增：<br />103 资产包（包含多个散标债权）
-8 | 3.6 投资记录查询：Response | 新增：<br />"username": "string, 投之家用户名"<br />"usernamep": "string, 合作平台用户名"<br />"period": "string, 实际投资期限, 1d, 1m"<br />"interestAt": "datetime, 起息时间"<br />"investRate": "float, 投资利率"<br />"investMethod": "enum, 投资方式(1:PC, 2:WAP, 4:Android, 8:iOS, 16:用户开启自动购买, 32:系统自动匹配购买（如理财计划类）) "<br />"status": "enum, 投资状态(0:还款中, 1:已还清)"
+8 | 3.6 投资记录查询：Response | 新增：<br />"username": "string, 投之家用户名"<br />"usernamep": "string, 合作平台用户名"<br />"period": "string, 实际投资期限, 1d, 1m"<br />"interestAt": "datetime, 起息时间"<br />"investRate": "float, 投资利率"<br />"investMethod": "enum, 投资方式(1:PC, 2:WAP, 4:Android, 8:iOS, 16:用户开启自动购买, 32:系统自动匹配购买（如理财计划类）) "<br />"status": "enum, 投资状态(0:还款中, 1:已还清, 9:投资失败)"
 9 | 3.7 回款记录查询：Response | 全部变更
 10 | 3.7 回款记录查询：回款类型 | 新增：<br />2 提前回款，借款人提前还款  
 11 | 注意事项： | 1.float型数据保留2位小数<br />2.利率回传格式：如1.5%，回传1.5即可
