@@ -31,7 +31,9 @@ createUser 和 bindUser 在移动端邮箱为非必传项。所以出现邮箱�
   "bankCard": {
 	  "number": "string, 卡号",
 	  "bank": "string, 银行名称",
-	  "branch": "string, 支行名"
+	  "branch": "string, 支行名",
+	  "province": "string, 省份",
+	  "city": "string, 城市"
   },
   "tags": "array, 标签 (wap,pc)"
 }
@@ -43,7 +45,6 @@ createUser 和 bindUser 在移动端邮箱为非必传项。所以出现邮箱�
 用户授权绑定成功后平台需同步回调投之家的接口URL.
 
 	 线上地址：http://open.api.touzhijia.cn/callback
-	 线上移动端地址：http://t.m.touzhijia.com/api/callback
 	 测试地址：http://test.touzhijia.com:3333/callback
 
 此时请求的URL 所需参数为：
@@ -57,7 +58,7 @@ createUser 和 bindUser 在移动端邮箱为非必传项。所以出现邮箱�
   "registerAt": "datetime, required, 平台注册时间",
   "bindAt": "datetime, required, 绑定投之家时间",
   "bindType": "enum, 1:表示平台已有用户",
-  "type":  "登录类型，0:PC，1:WAP",
+  "salt": "string, 用于鉴权校验,该账户的8位长度密钥",
   "tags": "array, 标签"
 }
 ```
