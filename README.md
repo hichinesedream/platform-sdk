@@ -340,7 +340,7 @@ code | message
 }
 ```
 
-根据timeRange查询某一时间范围内完成绑定的所有用户信息；或根据index查询指定用户名的用户信息
+根据timeRange查询某一时间范围内完成绑定(bindAt)的所有用户信息；或根据index查询指定投之家用户名(username)的用户信息
 
 ### Response
 ```json
@@ -394,7 +394,7 @@ code | message
 }
 ```
 
-根据timeRange查询某一时间范围内**创建的所有标**的信息；或根据index查询指定标的ID的标的信息
+根据timeRange查询某一时间范围内**创建的所有标（createAt）**的信息；或根据index查询指定标的ID（id）的标的信息
 
 
 ### Response
@@ -483,7 +483,7 @@ status | 说明
 }
 ```
 
-根据timeRange查询某一时间范围内发生的所有投资记录；或根据index进行以下查询
+根据timeRange查询某一时间范围内(investAt)发生的所有投资记录；或根据index进行以下查询
 
 - id查询（name="id"），查询指定投资ID的投资记录，一个id对应一条投资记录
 - bid查询（name="bid"），查询指定标的ID的投资记录列表，一个bid对于多条投资记录
@@ -535,7 +535,7 @@ status | 说明
 }
 ```
 
-根据timeRange查询某一时间范围内创建的所有回款计划；或根据index进行以下查询
+根据timeRange查询某一时间范围内创建(createTime)的所有回款计划；或根据index进行以下查询
 
 - investId查询（field="investId"），查询指定投资ID的回款计划
 - bid查询（field="bid"），查询指定标的ID所有投资对应的回款计划
