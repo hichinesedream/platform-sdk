@@ -270,7 +270,7 @@ code | message
 	 线上地址：http://open.api.touzhijia.cn/callback
 	 测试地址：http://test.touzhijia.com:3333/callback
 
-此时请求的URL 所需参数为：
+此时请求的URL 所需参数为：data=xxx&nonce=xxx&signature=xxx&timestamp=12345643&appId=xxxx
 ### Service
 `service=bindUser`
 ### Request
